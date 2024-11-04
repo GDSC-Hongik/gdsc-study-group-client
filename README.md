@@ -1,1 +1,1 @@
-# gdsc-study-group-client
+# 프로젝트 세팅
