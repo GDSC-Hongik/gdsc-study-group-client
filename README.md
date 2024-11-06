@@ -17,3 +17,11 @@
   - @emotion/css @emotion/react @emotion/styled @emotion/core
 - @tanstack
   - @tanstack/react-query @tanstack/react-query-devtools
+- prettier
+- eslint
+  - eslint-plugin-prettier
+    - eslint와 prettier가 서로 충돌하지 않기 위한 플러그인.
+  - eslint-plugin-react
+  - eslint-plugin-react-hooks
+  - eslint-plugin-jsx-a11y
+    - jsx 문법(xml 부분)을 정적 분석할 수 있도록 하는 모듈.
