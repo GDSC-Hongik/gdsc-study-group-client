@@ -25,3 +25,4 @@
   - eslint-plugin-react-hooks
   - eslint-plugin-jsx-a11y
     - jsx 문법(xml 부분)을 정적 분석할 수 있도록 하는 모듈.
+- husky
