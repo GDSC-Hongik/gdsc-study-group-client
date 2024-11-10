@@ -26,3 +26,6 @@
   - eslint-plugin-jsx-a11y
     - jsx 문법(xml 부분)을 정적 분석할 수 있도록 하는 모듈.
 - husky
+- @vitejs
+  - plugin-react-swc
+    - Babel에 비해 컴파일 속도가 향상된 컴파일러 사용.
