@@ -4,7 +4,7 @@ import GrayProfile from '../src/assets/gray-profile.svg';
 import SmallArrow from '../src/assets/small-arrow.svg';
 import StudyTwoImages from './StudyTwoImages';
 
-const SmallStudyItem = () => {
+const SmallStudyItem = ({ text1, text2, type }) => {
   return (
     <Box>
       <Content>
@@ -14,7 +14,7 @@ const SmallStudyItem = () => {
           <Ptag className="detail">
             타입스크립트를 심화해서 공부하고, 공유해요.
           </Ptag>
-          <StudyTwoImages text1={'6 / 6'} text2={'조정 예정'} type={'GREEN'} />
+          <StudyTwoImages text1={text1} text2={text2} type={type} />
         </div>
       </Content>
       <ArrowImg>
@@ -37,6 +37,7 @@ const Content = styled.div`
 `;
 
 const Box = styled.div`
+  border: 1px solid #6b6b6b;
   background-color: white;
   box-sizing: border-box;
   padding: 0px;

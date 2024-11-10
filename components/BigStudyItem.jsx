@@ -71,12 +71,12 @@ const Ptag = styled.p`
 `;
 
 const Box = styled.div`
+  border: 1px solid #6b6b6b;
   box-sizing: border-box;
   padding: 36.5px 27px 40px 36.5px;
   display: flex;
   align-item: center;
   justify-content: space-between;
-  border: none;
   border-radius: 16px;
   min-height: 200px;
   max-width: 1200px;

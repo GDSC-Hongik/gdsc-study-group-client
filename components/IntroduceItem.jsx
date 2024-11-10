@@ -79,8 +79,8 @@ const Ptag = styled.p`
 `;
 
 const Box = styled.div`
+  border: 1px solid #6b6b6b;
   box-sizing: border-box;
-  border: none;
   border-radius: 8px;
   padding: 20px;
   min-height: 134px;
