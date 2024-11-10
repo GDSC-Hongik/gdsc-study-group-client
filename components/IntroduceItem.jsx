@@ -11,13 +11,13 @@ const Introduce = () => {
         <Ptag className="names">
           이혁, 강유빈, 김유진, 김태우, 이예은, 정재훈, 천민재
         </Ptag>
-        <Alignss>
+        <Alignss2>
           <Ptag className="count">조회수 2022</Ptag>
           <Ptag className="heart">
             <img src={heart} />
             <p>9</p>
           </Ptag>
-        </Alignss>
+        </Alignss2>
       </Alignss1>
     </Box>
   );
@@ -32,7 +32,7 @@ const Alignss1 = styled.div`
   justify-content: space-between;
 `;
 
-const Alignss = styled.div`
+const Alignss2 = styled.div`
   display: flex;
   align-item: center;
   margin: 0px;
@@ -42,20 +42,28 @@ const Alignss = styled.div`
 const Ptag = styled.p`
   &.date {
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
     color: #6b6b6b;
     margin: 0px 0px 13px;
   }
   &.title {
     font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
     margin: 0px 0px 14px 0px;
   }
   &.names {
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
     margin: 0px;
     padding: 0px;
   }
   &.count {
     font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
     margin: 0px;
   }
   &.heart {
@@ -65,6 +73,8 @@ const Ptag = styled.p`
     height: 16px;
     margin: 0px;
     font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
   }
 `;
 
@@ -75,4 +85,5 @@ const Box = styled.div`
   padding: 20px;
   min-height: 134px;
   max-width: 790px;
+  background-color: white;
 `;
