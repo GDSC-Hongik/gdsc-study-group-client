@@ -1,41 +1,78 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import heart from '../src/assets/heart.svg';
 
 const Introduce = () => {
   return (
     <Box>
-      <Ptag className="date">2024.10.31</Ptag>
+      <Ptag className="date">2024.10.31.</Ptag>
       <Ptag className="title">[1회차] 아이엠 그라운드 자기소개 하기</Ptag>
-      <Ptag className="names">
-        이혁, 강유빈, 김유진, 김태우, 이예은, 정재훈, 천민재
-      </Ptag>
+      <Alignss1>
+        <Ptag className="names">
+          이혁, 강유빈, 김유진, 김태우, 이예은, 정재훈, 천민재
+        </Ptag>
+        <Alignss>
+          <Ptag className="count">조회수 2022</Ptag>
+          <Ptag className="heart">
+            <img src={heart} />
+            <p>9</p>
+          </Ptag>
+        </Alignss>
+      </Alignss1>
     </Box>
   );
 };
 
 export default Introduce;
 
+const Alignss1 = styled.div`
+  display: flex;
+  align-item: center;
+  margin: 0px;
+  justify-content: space-between;
+`;
+
+const Alignss = styled.div`
+  display: flex;
+  align-item: center;
+  margin: 0px;
+  gap: 16px;
+`;
+
 const Ptag = styled.p`
   &.date {
     font-size: 16px;
     color: #6b6b6b;
-    margin: 0px 0px 20px;
+    margin: 0px 0px 13px;
   }
   &.title {
     font-size: 24px;
+    margin: 0px 0px 14px 0px;
   }
   &.names {
     font-size: 16px;
-    margin-bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+  &.count {
+    font-size: 14px;
+    margin: 0px;
+  }
+  &.heart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 16px;
+    margin: 0px;
+    font-size: 14px;
   }
 `;
 
 const Box = styled.div`
+  box-sizing: border-box;
   border: none;
   border-radius: 8px;
-  background-color: gray;
   padding: 20px;
-  height: 134px;
-  width: 790px;
-  box-sizing: border-box;
+  min-height: 134px;
+  max-width: 790px;
 `;
