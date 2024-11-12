@@ -59,9 +59,11 @@ const Ptag = styled.p`
     margin-bottom: 30px;
   }
   &.ask {
+    font-size: 30px;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    line-height: normal;
+    letter-spacing: -0.8px;
 
     display: flex;
 
