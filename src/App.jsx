@@ -1,5 +1,11 @@
+import AppliedStudyItem from '../components/AppliedStudyItem';
+import BigStudyItem from '../components/BigStudyItem';
+import IntroduceItem from '../components/IntroduceItem';
+import SmallStudyItem from '../components/SmallStudyItem';
+import ModalReviewWrite from '../components/ModalReviewWrite';
 import './App.css';
 import React from 'react';
+import ModalReviewers from '../components/ModalReviewers';
 import StudyStatus from './components/StudyStatus';
 import SelfIntroduceItem from './components/SelfIntroduceItem';
 import StudyItemBig from './components/StudyItemBig';
@@ -87,6 +93,7 @@ function App() {
         />
       </div>
     </div>
+
   );
 }
 

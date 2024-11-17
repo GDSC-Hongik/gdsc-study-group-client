@@ -25,6 +25,7 @@ export default [
       'react/jsx-curly-brace-presence': 'warn',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
+      'react/prop-types': 'off',
       'prettier/prettier': [
         'error',
         {
