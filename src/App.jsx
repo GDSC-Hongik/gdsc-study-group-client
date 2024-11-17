@@ -5,7 +5,10 @@ import SelfIntroduceItem from './components/SelfIntroduceItem';
 import StudyItemBig from './components/StudyItemBig';
 import StudyItemSmall from './components/StudyItemSmall';
 
+import Home from './pages_hhhk/home';
+
 function App() {
+
   return (
     <div
       style={{
