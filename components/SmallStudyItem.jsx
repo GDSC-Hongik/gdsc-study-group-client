@@ -49,7 +49,7 @@ const Box = styled.div`
 `;
 const CircleImg = styled.img`
   height: 80px;
-  weight: 80px;
+  width: 80px;
   margin: 18px 20px 0px 20px;
 `;
 const Ptag = styled.p`
