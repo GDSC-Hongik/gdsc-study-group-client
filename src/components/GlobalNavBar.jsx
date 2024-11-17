@@ -34,7 +34,9 @@ const Container = styled.header`
   align-items: center;
 
   background-color: white;
-  position: absolute;
+  position: fixed;
+  top: 0px;
+  z-index: 3;
 `;
 
 export default GlobalNavBar;

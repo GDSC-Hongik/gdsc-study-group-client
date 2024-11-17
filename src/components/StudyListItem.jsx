@@ -4,6 +4,7 @@ import Profile from '../assets/Profile.svg';
 import User from '../assets/User.svg';
 import Time from '../assets/Time.svg';
 
+
 const StudyListItem = () => {
   return (
     <Wrapper>

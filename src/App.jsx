@@ -1,12 +1,9 @@
 import './App.css';
-import StudyListItem from './components/StudyListItem';
+
+import Home from './pages/home';
 
 function App() {
-  return (
-    <>
-      <StudyListItem></StudyListItem>
-    </>
-  );
+  return <Home></Home>;
 }
 
 export default App;
