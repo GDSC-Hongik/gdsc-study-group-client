@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Logo from '../assets/Logo.png';
-import Button from '../components/Button';
+import Button from './Button';
 
 const GlobalNavBar = () => {
   // 로그인이 된 상태냐 아니냐에 따라 보여주는 버튼이 다름.

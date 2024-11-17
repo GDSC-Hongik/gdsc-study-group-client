@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-import GlobalNavBar from '../components/GlobalNavBar';
-import StudyListItem from '../components/StudyListItem';
-import LocalNavBar from '../components/LocalNavBar';
+import GlobalNavBar from '../components_hhhk/GlobalNavBar';
+import StudyListItem from '../components_hhhk/StudyListItem';
+import LocalNavBar from '../components_hhhk/LocalNavBar';
 
 const Home = () => {
   return (
