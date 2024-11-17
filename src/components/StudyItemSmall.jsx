@@ -16,43 +16,47 @@ const StudyItemSmall = ({
   const UserIcon = isFull ? UserGreen : UserBlue;
   return (
     <Wrapper>
-      <div className="profile">
-        <img src={Ellipse} width="80px" height="80px"></img>{' '}
-      </div>
-      <div className="main">
-        <div className="studyinfo">
-          <div className="studyname">{studyname}</div>
-          <div className="studydetail">{studydetail}</div>
+      <div className="left">
+        <div className="profile">
+          <img src={Ellipse} width="80px" height="80px"></img>{' '}
         </div>
-        <div className="studysuffix">
-          <div className="member">
-            <div className="User">
-              <img src={UserIcon} width="32px" height="32px"></img>
+        <div className="main">
+          <div className="studyinfo">
+            <div className="studyname">{studyname}</div>
+            <div className="studydetail">{studydetail}</div>
+          </div>
+          <div className="studysuffix">
+            <div className="member">
+              <div className="User">
+                <img src={UserIcon} width="32px" height="32px"></img>
+              </div>
+              <TO isFull={isFull}>
+                {studycurrentTO}/{studyMaxTO}
+              </TO>
             </div>
-            <TO isFull={isFull}>
-              {studycurrentTO} / {studyMaxTO}
-            </TO>
-          </div>
-        </div>
-        <div className="schedule">
-          <div className="time">
-            <img src={Time} width="32px" height="32px"></img>
-          </div>
-          <div
-            className="when"
-            style={{
-              color: '#6b6b6b',
-              fontSize: '20px',
-              fontWeight: '400',
-              letterSpacing: '-0.5px'
-            }}
-          >
-            {studyschedule}
+            <div className="schedule">
+              <div className="time">
+                <img src={Time} width="32px" height="32px"></img>
+              </div>
+              <div
+                className="when"
+                style={{
+                  color: '#6b6b6b',
+                  fontSize: '20px',
+                  fontWeight: '400',
+                  letterSpacing: '-0.5px'
+                }}
+              >
+                {studyschedule}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="arrow">
-        <img src={arrow} width="48px" height="48px"></img>
+      <div className="right">
+        <div className="arrow">
+          <img src={arrow} width="48px" height="48px"></img>
+        </div>
       </div>
     </Wrapper>
   );
@@ -68,87 +72,99 @@ const Wrapper = styled.div`
   border: 1px solid #6b6b6b;
   border-radius: 16px;
   box-sizing: border-box;
-  justify-content: center;
   align-items: center;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.6px;
   flex-direction: row;
 
-  .profile {
+  .left {
     display: flex;
-    margin-right: 20px;
     justify-content: flex-start;
-    align-items: center;
-  }
+    margin-right: 124px;
 
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 20px;
-
-    .studyinfo {
+    .profile {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-
-      .studyname {
-        display: flex;
-      }
-
-      .studydetail {
-        display: flex;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: -0.4px;
-      }
-    }
-
-    .studysuffix {
-      display: flex;
-      flex-direction: row;
+      margin-right: 20px;
       justify-content: flex-start;
       align-items: center;
-      gap: 32px;
+      margin-right: 20px;
+    }
 
-      .member {
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 28px;
+
+      .studyinfo {
         display: flex;
-        gap: 13px;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
+        gap: 4px;
+
+        .studyname {
+          display: flex;
+        }
+
+        .studydetail {
+          display: flex;
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: -0.4px;
+        }
       }
 
-      .schedule {
+      .studysuffix {
         display: flex;
-        gap: 11px;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+        width: 262px;
+        height: 32px;
+        gap: 32px;
 
-        .time {
+        .member {
           display: flex;
+          gap: 13px;
+          flex-direction: row;
+          justify-content: center;
           align-items: center;
         }
 
-        .when {
+        .schedule {
           display: flex;
-          font-weight: 400;
-          letter-spacing: -0.5px;
-          color: #6b6b6b;
+          gap: 11px;
+          flex-direction: row;
+          justify-content: flex-start;
           align-items: center;
+
+          .time {
+            display: flex;
+            align-items: center;
+          }
+
+          .when {
+            display: flex;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            color: #6b6b6b;
+            align-items: center;
+          }
         }
       }
     }
   }
 
-  .arrow {
+  .right {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    .arrow {
+      display: flex;
+      margin-right: 0px;
+    }
   }
 `;
 
