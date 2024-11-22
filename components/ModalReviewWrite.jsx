@@ -1,6 +1,8 @@
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { useState } from 'react';
+import TopLine from './TopLine';
 import RedCircle from '../src/assets/red-circle.svg';
 import YellowCircle from '../src/assets/yellow-circle.svg';
 import GreenCircle from '../src/assets/green-circle.svg';
@@ -21,13 +23,9 @@ const ModalReviewWrite = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <TopLine>
-          <CircleImgs src={RedCircle}></CircleImgs>
-          <CircleImgs src={YellowCircle}></CircleImgs>
-          <CircleImgs src={GreenCircle}></CircleImgs>
-        </TopLine>
+        <TopLine exist={false} />
         <Content>
-          <Title>제목을 입력해주세요.</Title>
+          <Title placeholder="제목을 입력해주세요."></Title>
           <TwoBoxes>
             <InBox>모임 방식</InBox>
             <InBox>참여 인원</InBox>
@@ -130,32 +128,25 @@ const InBox = styled.div`
   padding: 9px 0px 12px 20px;
 `;
 
-const Title = styled.p`
+const TitleSharedStyle = css`
+  /*Title의 공통 스타일 */
   color: var(--Component-Default-Outline, #c2c2c2);
   font-size: 24px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
   letter-spacing: -0.6px;
+`;
+
+const Title = styled.input`
+  ${TitleSharedStyle} /*공통 스타일 적용 */
   margin: 0px;
   margin-bottom: 26px;
   padding: 0px;
-`;
-
-const CircleImgs = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
-const TopLine = styled.div`
-  background-color: #c7c7c7;
-  width: 1056px;
-  height: 32px;
-  padding: 8px 0px 8px 9px;
-  box-sizing: border-box;
-
-  display: flex;
-  gap: 8px;
+  border: none;
+  &::placeholder {
+    ${TitleSharedStyle}
+  }
 `;
 
 const customStyles = {
