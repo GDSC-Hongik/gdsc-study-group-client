@@ -27,14 +27,14 @@ export default Introduce;
 
 const Alignss1 = styled.div`
   display: flex;
-  align-item: center;
+  align-items: center;
   margin: 0px;
   justify-content: space-between;
 `;
 
 const Alignss2 = styled.div`
   display: flex;
-  align-item: center;
+  align-items: center;
   margin: 0px;
   gap: 16px;
 `;

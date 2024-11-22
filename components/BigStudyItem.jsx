@@ -31,7 +31,7 @@ const Content = styled.div`
 `;
 
 const Asking = styled.div`
-  witdh: 629px;
+  width: 629px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -40,7 +40,7 @@ const Asking = styled.div`
 
 const CircleImg = styled.img`
   height: 128px;
-  weight: 128px;
+  width: 128px;
   margin: 0px;
   margin-right: 39px;
 `;
@@ -77,7 +77,7 @@ const Box = styled.div`
   box-sizing: border-box;
   padding: 36.5px 27px 40px 36.5px;
   display: flex;
-  align-item: center;
+  align-items: center;
   justify-content: space-between;
   border-radius: 16px;
   min-height: 200px;
