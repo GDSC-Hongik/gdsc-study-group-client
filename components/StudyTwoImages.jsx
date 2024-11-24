@@ -38,7 +38,7 @@ const ContentImg = styled.div`
   .count,
   .clockInfo {
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 32px;
   }
 `;
 const Ptag = styled.p`
