@@ -1,19 +1,10 @@
-import RedCircle from '../src/assets/red-circle.svg';
-import YellowCircle from '../src/assets/yellow-circle.svg';
-import GreenCircle from '../src/assets/green-circle.svg';
 import LeftArr from '../src/assets/left-small-arrow.svg';
 import RightArr from '../src/assets/right-small-arrow.svg';
-
 import styled from '@emotion/styled';
 
 const TopLine = ({ exist }) => {
   return (
     <TopLine1>
-      <CImgs>
-        <CircleImgs src={RedCircle}></CircleImgs>
-        <CircleImgs src={YellowCircle}></CircleImgs>
-        <CircleImgs src={GreenCircle}></CircleImgs>
-      </CImgs>
       {exist === true ? (
         <DateText>
           <img src={LeftArr}></img>
@@ -38,12 +29,6 @@ const Ptag = styled.p`
   letter-spacing: -0.4px;
 `;
 
-const CImgs = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-right: 380px;
-`;
-
 const TopLine1 = styled.div`
   background-color: #c7c7c7;
   width: 1056px;
@@ -53,11 +38,9 @@ const TopLine1 = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
-const CircleImgs = styled.img`
-  width: 16px;
-  height: 16px;
-`;
+
 const DateText = styled.div`
   display: flex;
   gap: 2px;

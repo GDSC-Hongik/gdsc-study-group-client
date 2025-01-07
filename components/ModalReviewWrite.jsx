@@ -3,9 +3,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import TopLine from './TopLine';
-import RedCircle from '../src/assets/red-circle.svg';
-import YellowCircle from '../src/assets/yellow-circle.svg';
-import GreenCircle from '../src/assets/green-circle.svg';
 
 //Modal.setAppElement('#root');
 
