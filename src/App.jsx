@@ -6,12 +6,12 @@ import './App.css';
 import ModalReviewWrite from '../components/ModalReviewWrite';
 import React from 'react';
 import ModalReviewers from '../components/ModalReviewers';
+import ModalApply1 from '../components/ModalApply1';
 
 function App() {
   return (
     <>
-      <ModalReviewers />
-      <ModalReviewWrite />
+      <ModalApply1 />
     </>
   );
 }
