@@ -12,9 +12,9 @@ import StudyItemBig from './components/StudyItemBig';
 import StudyItemSmall from './components/StudyItemSmall';
 
 import Home from './pages_hhhk/home';
+import StudyApplyModal from './components/StudyApplyModal';
 
 function App() {
-
   return (
     <div
       style={{
@@ -92,8 +92,15 @@ function App() {
           studyschedule="화요일 19시"
         />
       </div>
-    </div>
 
+      <div>
+        <StudyApplyModal
+          studyname="이펙티브 타입스크립트 스터디"
+          studyrequirements="React와 자바스크립트 공부를 해보신 분
+          기본적인 타입스크립트 개념을 아시는 분"
+        />
+      </div>
+    </div>
   );
 }
 
