@@ -29,7 +29,8 @@ const ArrowImg = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 128px;
+  margin: 0px;
+  margin-right: 20px;
 `;
 
 const Content = styled.div`
@@ -39,13 +40,15 @@ const Content = styled.div`
 const Box = styled.div`
   border: 1px solid #6b6b6b;
   background-color: white;
-  box-sizing: border-box;
+
   padding: 0px;
-  max-width: 585px;
+  max-width: 588px;
   min-height: 176px;
   border-radius: 16px;
 
   display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
 `;
 const CircleImg = styled.img`
   height: 80px;
@@ -53,21 +56,25 @@ const CircleImg = styled.img`
   margin: 18px 20px 0px 20px;
 `;
 const Ptag = styled.p`
+  font-style: normal;
+  line-height: normal;
+  & * {
+    font-style: normal;
+    line-height: normal;
+  }
   &.title {
     font-size: 24px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     letter-spacing: -0.6px;
+
     margin-bottom: 4px;
     margin-top: 32px;
   }
   &.detail {
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: -0.4px;
+
     margin: 0px;
   }
 `;
