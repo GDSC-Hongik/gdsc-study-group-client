@@ -6,12 +6,13 @@ import './App.css';
 import ModalReviewWrite from '../components/ModalReviewWrite';
 import React from 'react';
 import ModalReviewers from '../components/ModalReviewers';
-import ModalApply1 from '../components/ModalApply1';
+import ModalApply from '../components/ModalApply';
 
 function App() {
   return (
     <>
-      <ModalApply1 />
+      <ModalApply exist={false} />
+      <ModalApply exist={true} />
     </>
   );
 }
