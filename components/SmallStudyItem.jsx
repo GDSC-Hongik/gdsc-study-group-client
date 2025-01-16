@@ -42,7 +42,7 @@ const Box = styled.div`
   background-color: white;
 
   padding: 0px;
-  max-width: 588px;
+  width: 585px;
   min-height: 176px;
   border-radius: 16px;
 
