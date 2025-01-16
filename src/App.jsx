@@ -7,12 +7,14 @@ import ModalReviewWrite from '../components/ModalReviewWrite';
 import React from 'react';
 import ModalReviewers from '../components/ModalReviewers';
 import ModalApply from '../components/ModalApply';
+import ModalStudyMake from '../components/ModalStudyMake';
 
 function App() {
   return (
     <>
       <ModalApply exist={false} />
       <ModalApply exist={true} />
+      <ModalStudyMake />
     </>
   );
 }
