@@ -109,9 +109,7 @@ export const GlobalStyle = css`
   }
 
   body {
-    width: 1280px;
-    height: 100vh;
-
+    width: 100vw;
     overflow-y: auto;
   }
 `;

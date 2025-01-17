@@ -5,10 +5,14 @@ import App from './App.jsx';
 
 import { Global } from '@emotion/react';
 import { GlobalStyle } from './shared/styles/GlobalStyle.js';
+import { BrowserRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Global styles={GlobalStyle} />
-    <App />
-  </StrictMode>
+  <BrowserRouter>
+    <StrictMode>
+      <Global styles={GlobalStyle} />
+
+      <App />
+    </StrictMode>
+  </BrowserRouter>
 );
