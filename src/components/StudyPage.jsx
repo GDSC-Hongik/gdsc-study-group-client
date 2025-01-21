@@ -7,6 +7,10 @@ import StudyGroup from '../components/StudyGroup';
 import StudyApplierButton from '../components/StudyApplierButton';
 import StudyApplyeeButton from '../components/StudyApplyeeButton';
 
+import StudyApplyeeStatus from './StudyApplyeeStatus';
+import StudyApplierStatus from './StudyApplierStatus';
+import { Link } from 'react-router-dom';
+
 function StudyPage({ userRole }) {
   // 예시 하드코딩 데이터
   const studyData = {
