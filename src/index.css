@@ -1,4 +1,26 @@
+* {
+  /* 문서 내 모든 요소에 공통적으로 적용될 스타일 */
+  /* 초기화 및 공통 속성 설정 */
+  box-sizing: border-box;
+}
+
+html {
+  /* 문서의 루트 요소 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(231, 226, 220); /* 나중에 흰색으로 변경할 예쩡 */
+}
 
 body {
-  background-color: rgb(231, 226, 220);
+  /* HTML 문서의 본문 영역 */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  padding-top: 80px; /* Navbar 높이만큼 여백 추가 */
 }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import GrayProfile from '../src/assets/gray-profile.svg';
-import NoStudy from '../src/assets/no-study.svg';
+import GrayProfile from '../assets/gray-profile.svg';
+import NoStudy from '../assets/no-study.svg';
 
 const AppliedStudyItem = ({
   text1,

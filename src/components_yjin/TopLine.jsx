@@ -1,5 +1,5 @@
-import LeftArr from '../src/assets/left-small-arrow.svg';
-import RightArr from '../src/assets/right-small-arrow.svg';
+import LeftArr from '../assets/left-small-arrow.svg';
+import RightArr from '../assets/right-small-arrow.svg';
 import styled from '@emotion/styled';
 
 const TopLine = ({ exist }) => {
