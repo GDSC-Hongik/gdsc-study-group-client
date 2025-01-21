@@ -1,20 +1,23 @@
-import AppliedStudyItem from '../components/AppliedStudyItem';
-import BigStudyItem from '../components/BigStudyItem';
-import IntroduceItem from '../components/IntroduceItem';
-import SmallStudyItem from '../components/SmallStudyItem';
 import './App.css';
-import ModalReviewWrite from '../components/ModalReviewWrite';
 import React from 'react';
-import ModalReviewers from '../components/ModalReviewers';
-import ModalApply from '../components/ModalApply';
-import ModalStudyMake from '../components/ModalStudyMake';
+
+import AppliedStudyItem from './components_yjin/AppliedStudyItem';
+import BigStudyItem from './components_yjin/BigStudyItem';
+import IntroduceItem from './components_yjin/IntroduceItem';
+import ModalApply from './components_yjin/ModalApply';
+import ModalReviewWrite from './components_yjin/ModalReviewWrite';
+import ModalReviewers from './components_yjin/ModalReviewers';
+import ModalStudyMake from './components_yjin/ModalStudyMake';
+import SmallStudyItem from './components_yjin/SmallStudyItem';
+import StudyList from './pages_yjin/StudyList';
+import NavBar from './components_yjin/NavBar';
+import GlobalNavBar from './components_hhhk/GlobalNavBar';
 
 function App() {
   return (
     <>
-      <ModalApply exist={false} />
-      <ModalApply exist={true} />
-      <ModalStudyMake />
+      <NavBar />
+      <StudyList />
     </>
   );
 }
