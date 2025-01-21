@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import heart from '../src/assets/heart.svg';
+import heart from '../assets/heart.svg';
 
 const Introduce = () => {
   return (

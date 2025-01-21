@@ -1,9 +1,9 @@
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import WeekNLeft from '../src/assets/weekN-left.svg';
-import WeekNRight from '../src/assets/weekN-right.svg';
-import ExpectPerson from '../src/assets/apply-person.svg';
+import WeekNLeft from '../assets/weekN-left.svg';
+import WeekNRight from '../assets/weekN-right.svg';
+import ExpectPerson from '../assets/apply-person.svg';
 
 const ModalApply = ({ exist }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

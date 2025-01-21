@@ -2,10 +2,11 @@ import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import TopLine from './TopLine';
-import GrayArrLeft from '../src/assets/gray-arrow-left.svg';
-import GrayArrRight from '../src/assets/gray-arrow-right.svg';
-import GrayProfile from '../src/assets/gray-profile.svg';
+import GrayArrLeft from '../assets/gray-arrow-left.svg';
+import GrayArrRight from '../assets/gray-arrow-right.svg';
+import GrayProfile from '../assets/gray-profile.svg';
 import ReviewItem from './ReviewItem';
+
 const studyGoalGontent =
   '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다.';
 const studyContent =

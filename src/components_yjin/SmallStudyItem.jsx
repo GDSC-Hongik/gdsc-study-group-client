@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import GrayProfile from '../src/assets/gray-profile.svg';
-import SmallArrow from '../src/assets/small-arrow.svg';
+import GrayProfile from '../assets/gray-profile.svg';
+import SmallArrow from '../assets/small-arrow.svg';
 import StudyTwoImages from './StudyTwoImages';
 
 const SmallStudyItem = ({ text1, text2, type }) => {
