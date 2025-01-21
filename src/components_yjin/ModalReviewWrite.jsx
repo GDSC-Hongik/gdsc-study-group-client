@@ -127,7 +127,6 @@ const InBox = styled.div`
 
 const TitleSharedStyle = css`
   /*Title의 공통 스타일 */
-  color: var(--Component-Default-Outline, #c2c2c2);
   font-size: 24px;
   font-style: normal;
   font-weight: 900;
@@ -141,8 +140,10 @@ const Title = styled.input`
   margin-bottom: 26px;
   padding: 0px;
   border: none;
+  outline: none;
   &::placeholder {
     ${TitleSharedStyle}
+    color: #c2c2c2;
   }
 `;
 
