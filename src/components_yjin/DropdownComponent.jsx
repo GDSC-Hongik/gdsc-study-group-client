@@ -12,6 +12,7 @@ const DropdownComponent = () => {
   const handleSelect = value => {
     setSelectedValue(value); // 선택한 값 저장
     setIsOpen(false); // 드롭다운 닫기
+    toggleDropdown();
   };
 
   return (
@@ -73,6 +74,8 @@ const DropdownList = styled.ul`
   z-index: 10;
 
   /* 리스트 숨김 처리 */
+  /* none -> 요소를 숨겨서 공간을 차지하지 않는다. */
+  /* block -> 요소를 보여주며 공간을 차지한다 (한 줄) */
   display: ${props => (props.isOpen ? 'block' : 'none')};
   padding: 0;
   margin: 0;
