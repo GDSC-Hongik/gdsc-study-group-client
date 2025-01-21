@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import GrayProfile from '../src/assets/gray-profile.svg';
-import SmallArrow from '../src/assets/small-arrow.svg';
+import GrayProfile from '../assets/gray-profile.svg';
+import SmallArrow from '../assets/small-arrow.svg';
 import StudyTwoImages from './StudyTwoImages';
 
 const SmallStudyItem = ({ text1, text2, type }) => {
@@ -42,7 +42,7 @@ const Box = styled.div`
   background-color: white;
 
   padding: 0px;
-  max-width: 588px;
+  width: 585px;
   min-height: 176px;
   border-radius: 16px;
 

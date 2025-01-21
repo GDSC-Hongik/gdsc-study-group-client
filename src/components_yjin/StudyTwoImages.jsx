@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import GreenPerson from '../src/assets/green-person.svg';
-import BluePerson from '../src/assets/blue-person.svg';
-import GrayClock from '../src/assets/gray-clock.svg';
+import GreenPerson from '../assets/green-person.svg';
+import BluePerson from '../assets/blue-person.svg';
+import GrayClock from '../assets/gray-clock.svg';
 
 const StudyTwoImages = ({ text1, text2, type }) => {
   let pimg;

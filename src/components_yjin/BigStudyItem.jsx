@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import GrayProfile from '../src/assets/gray-profile.svg';
-import Arrow from '../src/assets/arrow.svg';
+import GrayProfile from '../assets/gray-profile.svg';
+import Arrow from '../assets/arrow.svg';
 
 const BigStudyItem = () => {
   return (
