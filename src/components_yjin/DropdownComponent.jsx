@@ -28,6 +28,9 @@ const DropdownComponent = () => {
         <DropdownItem onClick={() => handleSelect('카테고리 3')}>
           카테고리 3
         </DropdownItem>
+        <DropdownItem onClick={() => handleSelect('카테고리 4')}>
+          카테고리 4
+        </DropdownItem>
       </DropdownList>
     </Dropdown>
   );
