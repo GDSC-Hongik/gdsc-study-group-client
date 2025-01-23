@@ -1,10 +1,20 @@
+// 1. 후기 작성하기 모달
+
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { useState } from 'react';
 import TopLine from './TopLine';
+import GrayArrLeft from '../assets/gray-arrow-left.svg';
+import GrayArrRight from '../assets/gray-arrow-right.svg';
 
-//Modal.setAppElement('#root');
+import ReviewItem from './ReviewItem';
+import ReviewStudyInfo from './ReviewStudyInfo';
+import WritingReviews from './WritingReviews';
+
+const studyGoalGontent =
+  '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다.';
+const studyContent =
+  '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다. 학습 내용은 200자 이상이기에 우선 더 작성해봤습니다. 실제로는 더 길 것으로 예상됩니다.';
 
 const ModalReviewWrite = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -20,34 +30,31 @@ const ModalReviewWrite = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <TopLine exist={false} />
-        <Content>
-          <Title placeholder="제목을 입력해주세요."></Title>
-          <TwoBoxes>
-            <InBox>모임 방식</InBox>
-            <InBox>참여 인원</InBox>
-          </TwoBoxes>
-          <LineBox />
-          <WriteBox>
-            <WriteTitle>학습 목표를 작성해주세요.</WriteTitle>
-            <WriteContent>
-              프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이
-              자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기
-              위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리
-              인듯 합니다.
-            </WriteContent>
-          </WriteBox>
-          <WriteBox>
-            <WriteTitle>학습 내용을 작성해주세요. (200자 이상)</WriteTitle>
-            <WriteContent>
-              프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이
-              자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기
-              위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리
-              인듯 합니다. 학습 내용은 200자 이상이기에 우선 더 작성해봤습니다.
-              실제로는 더 길 것으로 예상됩니다.
-            </WriteContent>
-          </WriteBox>
-        </Content>
+        <TopLine exist={true} />
+        <EnContent>
+          <ArrImg src={GrayArrLeft}></ArrImg>
+          <Content>
+            <Ptag className="Title">[1회차] 아이엠그라운드 자기소개하기</Ptag>
+
+            <ReviewStudyInfo />
+
+            <PictureBox />
+            <TwoGroup>
+              <GoalBox>
+                <Ptag className="bold">학습 목표</Ptag>
+                <Ptag className="goaltxt">{studyGoalGontent}</Ptag>
+              </GoalBox>
+              <GoalBox>
+                <Ptag className="bold">학습 내용</Ptag>
+                <Ptag className="goaltxt">{studyContent}</Ptag>
+              </GoalBox>
+            </TwoGroup>
+
+            <WritingReviews />
+          </Content>
+
+          <ArrImg src={GrayArrRight}></ArrImg>
+        </EnContent>
       </Modal>
     </>
   );
@@ -55,118 +62,103 @@ const ModalReviewWrite = () => {
 
 export default ModalReviewWrite;
 
-const WriteTitle = styled.p`
-  color: #000;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.4px;
-
-  margin: 0px;
-  margin-bottom: 16px;
-  padding: 0px;
-`;
-
-const WriteContent = styled.p`
-  color: #000;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.35px;
-
-  margin: 0px;
-  padding: 0px;
-`;
-
-const WriteBox = styled.div`
-  width: 758px;
+const GoalBox = styled.div`
+  width: 369px;
   padding: 20px;
-  margin-bottom: 24px;
 
   box-sizing: border-box;
-
   border-radius: 16px;
   border: 1px solid #555;
-  background: var(--Background-Normal, #fff);
+  background: #fff;
 `;
 
-const LineBox = styled.div`
-  width: 758px;
-  height: 1px;
-  background-color: #c2c2c2;
+const TwoGroup = styled.div`
+  margin-top: 24px;
+  margin-bottom: 31px;
+  display: flex;
+  gap: 20px;
+`;
 
-  margin-bottom: 24px;
+const PictureBox = styled.div`
+  width: 758px;
+  height: 204px;
+  margin: 24px 0;
+  background-color: #d9d9d9;
+`;
+
+const ArrImg = styled.img`
+  margin-bottom: 690px; /**수정 필요 */
+`;
+
+const EnContent = styled.div`
+  display: flex;
+  gap: 61px;
+  justify-content: center;
 `;
 
 const Content = styled.div`
   margin: 0px;
-  padding: 40px 149px;
-`;
-const TwoBoxes = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 23px;
-`;
-
-const InBox = styled.div`
-  color: #000;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  letter-spacing: -0.6px;
-
-  background-color: #d9d9d9;
-  box-sizing: border-box;
-  width: 360px;
-  height: 50px;
-  padding: 9px 0px 12px 20px;
-`;
-
-const TitleSharedStyle = css`
-  /*Title의 공통 스타일 */
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  letter-spacing: -0.6px;
-`;
-
-const Title = styled.input`
-  ${TitleSharedStyle} /*공통 스타일 적용 */
-  margin: 0px;
-  margin-bottom: 26px;
   padding: 0px;
-  border: none;
-  outline: none;
-  &::placeholder {
-    ${TitleSharedStyle}
-    color: #c2c2c2;
+  width: 758px;
+`;
+
+const Ptag = styled.p`
+  /*공통 속성 정의 */
+  color: #000;
+  font-style: normal;
+  line-height: normal;
+  & * {
+    /* 내부의 모든 자식 요소 */
+    color: #000;
+    font-style: normal;
+    line-height: normal;
+  }
+  &.Title {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.6px;
+
+    margin-top: 80px;
+  }
+
+  &.bold {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+  &.goaltxt {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.35px;
+
+    margin-top: 16px;
+  }
+
+  &.comTitle {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  &.comTxt {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+
+    margin: 24px 0px;
   }
 `;
 
 const customStyles = {
   content: {
-    /* 스크롤바 없애기 */
-    overflow: 'hidden',
-    /*모달이 화면 중앙에 오도록 설정 */
-    width: '1056px',
-    height: '600px',
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-
-    backgroundColor: 'white',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     margin: '0px',
     padding: '0px',
-    boxSizing: 'border-box',
-
-    borderRadius: '8px',
-    boxShadow: '0px 4px 8px 0px var(--Effect-Shadow-M, rgba(0, 0, 0, 0.20))'
+    width: '1056px',
+    height: '1100px',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)'
