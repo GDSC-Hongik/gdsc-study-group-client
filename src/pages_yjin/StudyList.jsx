@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import AppliedStudyItem from '../components_yjin/AppliedStudyItem';
 import SmallStudyItem from '../components_yjin/SmallStudyItem';
-import GlobalNavBar from '../components_hhhk/GlobalNavBar';
 import { css } from '@emotion/css';
 import DropdownComponent from '../components_yjin/DropdownComponent';
+import NavBar from '../components_yjin/NavBar';
 
 const StudyList = () => {
   return (
     <>
+      <NavBar />
       <Container className="content-wrapper">
         <Title>
           <div style={{ display: 'flex', gap: '10px' }}>
