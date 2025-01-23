@@ -13,16 +13,14 @@ import StudyList from './pages_yjin/StudyList';
 import NavBar from './components_yjin/NavBar';
 import GlobalNavBar from './components_hhhk/GlobalNavBar';
 import ModalReviewWrite from './components_yjin/ModalReviewWrite';
+import Router from './router';
 
-function App() {
+const App = () => {
   return (
     <>
-      <NavBar />
-      <StudyList />
-      <ModalReviewWrite />
-      <ModalReviewers />
+      <Router />
     </>
   );
-}
+};
 
 export default App;
