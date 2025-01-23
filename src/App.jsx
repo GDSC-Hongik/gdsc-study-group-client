@@ -14,6 +14,7 @@ import NavBar from './components_yjin/NavBar';
 import GlobalNavBar from './components_hhhk/GlobalNavBar';
 import ModalReviewWrite from './components_yjin/ModalReviewWrite';
 import Router from './router';
+import Home1 from './pages_yjin/Home1';
 
 const App = () => {
   return (
