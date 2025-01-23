@@ -15,7 +15,7 @@ const WritingReviews = () => {
       </Review>
 
       <ReviewWriting>
-        <WriteBox>아직 아무도 후기를 아직 작성하지 않았어요.</WriteBox>
+        <WriteBox placeholder="아직 아무도 후기를 아직 작성하지 않았어요."></WriteBox>
         <WriteButton>
           <Ptag className="writeButton">작성</Ptag>
         </WriteButton>
@@ -37,7 +37,7 @@ const ReviewWriting = styled.div`
   align-items: flex-end; /* 작성 버튼만 세로 방향 오른쪽 끝에 배치 */
 `;
 
-const WriteBox = styled.div`
+const WriteBox = styled.input`
   width: 100%;
   height: 78px;
   padding: 8px 16px;
@@ -48,12 +48,20 @@ const WriteBox = styled.div`
   border: 1px solid #000;
   background: var(--Background-Normal, #fff);
 
-  color: #6b6b6b;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.4px;
+
+  &::placeholder {
+    color: #6b6b6b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.4px;
+  }
 `;
 
 const WriteButton = styled.button`
