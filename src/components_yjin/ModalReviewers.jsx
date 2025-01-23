@@ -1,3 +1,5 @@
+// 2. 후기 작성자들을 보고 댓글을 작성할 수 있는 모달
+
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -6,13 +8,13 @@ import GrayArrLeft from '../assets/gray-arrow-left.svg';
 import GrayArrRight from '../assets/gray-arrow-right.svg';
 import GrayProfile from '../assets/gray-profile.svg';
 import ReviewItem from './ReviewItem';
+import ReviewStudyInfo from './ReviewStudyInfo';
 
 const studyGoalGontent =
   '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다.';
 const studyContent =
   '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다. 학습 내용은 200자 이상이기에 우선 더 작성해봤습니다. 실제로는 더 길 것으로 예상됩니다.';
-const reviewContent =
-  '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다.';
+
 const data = [
   {
     id: 1,
@@ -69,20 +71,13 @@ const ModalReviewers = () => {
         <TopLine exist={true} />
         <EnContent>
           <ArrImg src={GrayArrLeft}></ArrImg>
+
           <Content>
             <Ptag className="Title">[1회차] 아이엠그라운드 자기소개하기</Ptag>
-            <Info>
-              <img
-                src={GrayProfile}
-                style={{ width: '48px', height: '48px' }}
-              ></img>
-              <div>
-                <Ptag className="study-name">이펙티브 타입스크립트 스터디</Ptag>
-                <Ptag className="stu-name">
-                  이혁, 강유빈, 김유진, 김태우, 이예은, 정재훈, 천민재
-                </Ptag>
-              </div>
-            </Info>
+
+            <ReviewStudyInfo />
+
+            {/* 박스 내용들 */}
             <TwoGroup>
               <div>
                 <PictureBox />
@@ -103,6 +98,7 @@ const ModalReviewers = () => {
                 </GoalBox>
               </div>
             </TwoGroup>
+            {/* 댓글 작성하기 */}
             <Commenting>
               <Ptag className="comTitle">댓글</Ptag>
               <Ptag className="comTxt">
@@ -138,7 +134,6 @@ const WriteButton = styled.button`
   border-radius: 8px;
   background-color: #368ff7;
   border: none;
-  color: white;
 `;
 
 const ComInput = styled.input`
@@ -272,6 +267,8 @@ const Ptag = styled.p`
     font-size: 16px;
     font-weight: 400;
     letter-spacing: -0.4px;
+
+    color: white;
   }
 `;
 
