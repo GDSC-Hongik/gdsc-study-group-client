@@ -20,19 +20,22 @@ const AppliedStudyItem = ({
           ></CircleImg>
           <div>
             <Ptag className="title">이펙티브 타입스크립트 스터디</Ptag>
-            <Ptag className="detail">
-              타입스크립트를 심화해서 공부하고, 공유해요.
-            </Ptag>
+            <Ptag className="detail">타입스크립트를 심화해서 공부해요.</Ptag>
           </div>
         </Content>
       )}
 
       {exist === true && (
         <ContentDetail>
-          <li>{text1}</li>
-          <li>{text2}</li>
+          <li>
+            모집 인원 &nbsp; <span className="bold">{text1}</span>
+          </li>
+          <li>
+            스터디 일정 &nbsp; <span className="bold">{text2}</span>
+          </li>
         </ContentDetail>
       )}
+
       {existContent === false && (
         <NoStudyImg>
           <img src={NoStudy} />
@@ -53,13 +56,37 @@ const NoStudyImg = styled.div`
   margin-top: 30px;
   margin-left: 51px;
   display: flex;
-  gap: 47px;
+  gap: 42px;
+  align-items: center;
 `;
 
 const ContentDetail = styled.ul`
   padding: 0px;
   margin-top: 12px;
   margin-left: 87.5px;
+  margin-bottom: 10px;
+
+  list-style-type: disc; /* 기본 불릿 표시*/
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.35px;
+
+  li {
+    margin-bottom: 14px;
+  }
+  li::marker {
+    font-size: 10px;
+  }
+  .bold {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.35px;
+  }
 `;
 
 const CircleImg = styled.img`
@@ -69,6 +96,7 @@ const CircleImg = styled.img`
 
 const Content = styled.div`
   margin-top: 16px;
+  margin-right: 16px;
   display: flex;
   align-items: center;
 `;
@@ -93,6 +121,9 @@ const Button = styled.button`
   &.button_GREEN {
     background-color: #34a853;
   }
+  &.button_GRAY {
+    background-color: #6b6b6b;
+  }
 
   display: flex;
   justify-content: center;
@@ -110,17 +141,18 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #6b6b6b;
+
   background-color: white;
   max-width: 380px;
   min-height: 200px;
   border-radius: 16px;
 `;
 const Ptag = styled.p`
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
   &.title {
-    font-size: 16px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     letter-spacing: -0.4px;
 
     margin: 0px;
@@ -128,21 +160,17 @@ const Ptag = styled.p`
   }
   &.detail {
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: -0.35px;
 
     margin: 0px;
   }
   &.noStudyment {
-    color: #c2c2c2;
-    font-size: 16px;
-    font-style: normal;
+    color: #6b6b6b;
     font-weight: 700;
     line-height: 200%;
     letter-spacing: -0.4px;
 
-    max-width: 102px;
+    max-width: 120px;
   }
 `;
