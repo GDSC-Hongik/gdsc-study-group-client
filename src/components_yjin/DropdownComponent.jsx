@@ -55,7 +55,12 @@ const Dropdown = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  color: #585858;
   font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
 
   &::after {
     content: '▼'; /* 아이콘 */
