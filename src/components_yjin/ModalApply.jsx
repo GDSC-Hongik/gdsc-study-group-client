@@ -9,7 +9,6 @@ import ExpectPerson from '../assets/apply-person.svg';
 
 // hasQuestion : 모달에 질문을 포함할지 여부를 결정
 // buttonText : 모달을 여는 버튼에 표시될 텍스트
-// type : 버튼 스타일(색상)을 적용하기 위한 값
 // closeModal : 모달을 닫게 하는 함수
 
 const ModalApply = ({ isOpen, onClose, hasQuestion }) => {
@@ -86,36 +85,6 @@ const ModalApply = ({ isOpen, onClose, hasQuestion }) => {
   );
 };
 export default ModalApply;
-
-const Button = styled.button`
-  width: 348px;
-  height: 36px;
-  padding: 8px 39px;
-  border-radius: 12px;
-  border: none;
-  margin-bottom: 16px;
-
-  &.button_BLUE {
-    background-color: #368ff7;
-  }
-  &.button_GREEN {
-    background-color: #34a853;
-  }
-  &.button_GRAY {
-    background-color: #6b6b6b;
-  }
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.4px;
-`;
 
 const BoxQues = styled.div`
   width: 348px;
