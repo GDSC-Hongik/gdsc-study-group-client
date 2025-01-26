@@ -1,18 +1,40 @@
 import styled from '@emotion/styled';
+import ModalApply from './ModalApply';
 import GrayProfile from '../assets/gray-profile.svg';
 import NoStudy from '../assets/no-study.svg';
+import ModalStudyMake from './ModalStudyMake';
+import { useState } from 'react';
 
 const AppliedStudyItem = ({
-  text1,
-  text2,
+  peopleNum,
+  schedule,
   type,
   buttonText,
-  exist = false,
-  existContent = true
+  existContent = false,
+  existTitle = true
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리 _ 열기 / 닫기
+  const [modalType, setModalType] = useState(null); // 어떤 모달인지 구분
+
+  // 버튼이 '지원하기'인지 '개설하기'인지에 따라 어떤 모달을 보여줄지를 결정하는 모달 타입 setModalType
+  const handleButtonClick = () => {
+    if (buttonText === '지원하기') {
+      setModalType('apply');
+    } else if (buttonText === '개설하기') {
+      setModalType('make');
+    }
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  // 하위 모달 컴포넌트에 props로 전달해주는 역할
+  const closeModal = () => {
+    setIsModalOpen(false); // 모달 닫기
+    setModalType(null);
+  };
+
   return (
     <Box>
-      {existContent === true && (
+      {existTitle === true && (
         <Content>
           <CircleImg
             src={GrayProfile}
@@ -25,18 +47,18 @@ const AppliedStudyItem = ({
         </Content>
       )}
 
-      {exist === true && (
+      {existContent === true && (
         <ContentDetail>
           <li>
-            모집 인원 &nbsp; <span className="bold">{text1}</span>
+            모집 인원 &nbsp; <span className="bold">{peopleNum}</span>
           </li>
           <li>
-            스터디 일정 &nbsp; <span className="bold">{text2}</span>
+            스터디 일정 &nbsp; <span className="bold">{schedule}</span>
           </li>
         </ContentDetail>
       )}
 
-      {existContent === false && (
+      {existTitle === false && (
         <NoStudyImg>
           <img src={NoStudy} />
           <Ptag className="noStudyment">현재 모집 중인 스터디가 없어요.</Ptag>
@@ -44,13 +66,64 @@ const AppliedStudyItem = ({
       )}
 
       <ButtonDiv>
-        <Button className={`Button button_${type}`}>{buttonText}</Button>
+        <Button onClick={handleButtonClick} className={`Button button_${type}`}>
+          {buttonText}
+        </Button>
       </ButtonDiv>
+      {/* '개설하기' 또는 '지원하기' 클릭 시, 모달 랜더링 */}
+      {modalType === 'apply' && (
+        <ModalApply
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          hasQuestion={false}
+        />
+      )}
+      {modalType === 'make' && (
+        <ModalStudyMake isOpen={isModalOpen} onClose={closeModal} />
+      )}
     </Box>
   );
 };
 
 export default AppliedStudyItem;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+`;
+
+const Button = styled.button`
+  width: 348px;
+  height: 36px;
+  padding: 8px 39px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 16px;
+
+  &.button_BLUE {
+    background-color: #368ff7;
+    cursor: pointer;
+  }
+  &.button_GREEN {
+    background-color: #34a853;
+    cursor: pointer;
+  }
+  &.button_GRAY {
+    background-color: #6b6b6b;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
+`;
 
 const NoStudyImg = styled.div`
   margin-top: 30px;
@@ -101,49 +174,13 @@ const Content = styled.div`
   align-items: center;
 `;
 
-const ButtonDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
-`;
-
-const Button = styled.button`
-  width: 348px;
-  height: 36px;
-  padding: 8px 39px;
-  border-radius: 12px;
-  border: none;
-  margin-bottom: 16px;
-
-  &.button_BLUE {
-    background-color: #368ff7;
-  }
-  &.button_GREEN {
-    background-color: #34a853;
-  }
-  &.button_GRAY {
-    background-color: #6b6b6b;
-  }
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.4px;
-`;
-
 const Box = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #6b6b6b;
 
   background-color: white;
-  max-width: 380px;
+  width: 380px;
   min-height: 200px;
   border-radius: 16px;
 `;

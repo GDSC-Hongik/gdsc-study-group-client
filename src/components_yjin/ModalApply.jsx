@@ -1,3 +1,5 @@
+// '지원하시겠습니까?' 지원 모달 -> 스터디 박스에서 '지원하기' 버튼 클릭하면 나온다.
+
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -5,21 +7,22 @@ import WeekNLeft from '../assets/weekN-left.svg';
 import WeekNRight from '../assets/weekN-right.svg';
 import ExpectPerson from '../assets/apply-person.svg';
 
-const ModalApply = ({ exist }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+// hasQuestion : 모달에 질문을 포함할지 여부를 결정
+// buttonText : 모달을 여는 버튼에 표시될 텍스트
+// type : 버튼 스타일(색상)을 적용하기 위한 값
+// closeModal : 모달을 닫게 하는 함수
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+const ModalApply = ({ isOpen, onClose, hasQuestion }) => {
+  /* hasQuestion - 모달 스타일에 조건부 스타일 적용 */
+  /* 1. hasQuestion == false: 질문 없음 */
+  /* 2. hasQuestion == true: 질문 있음 */
 
-  /*모달 스타일에 조건부 스타일 적용하기: exist 변수 */
-  /*false: 질문 없음 */
-  /*true: 질문 있음*/
-  const getCustomStyles = exist => ({
+  const getCustomStyles = hasQuestion => ({
     content: {
       margin: '0px',
       padding: '0px',
       width: '1056px',
-      height: exist ? '765px' : '645px',
+      height: hasQuestion ? '765px' : '645px' /* 조건부 스타일 */,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)'
@@ -29,16 +32,12 @@ const ModalApply = ({ exist }) => {
     }
   });
 
-  const customStyles = getCustomStyles(exist);
+  const customStyles = getCustomStyles(hasQuestion);
 
   return (
     <>
-      <button onClick={openModal}>{exist ? 'apply2' : 'applt1'}</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
+      {/* 실제 구현할 때는 상위 파일에서 모달 여닫힘을 관리하므로 이 위치에 버튼이 필요없다. */}
+      <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
         <Content>
           <>
             <Ptag className="title1">이펙티브 타입스크립트 스터디</Ptag>
@@ -62,7 +61,8 @@ const ModalApply = ({ exist }) => {
               <img src={WeekNRight} />
             </Week>
           </Box>
-          {exist ? (
+
+          {hasQuestion ? (
             <Question>
               <BoxQues>
                 <p style={{ color: '#368FF7', fontWeight: '600' }}>질문</p>
@@ -72,20 +72,50 @@ const ModalApply = ({ exist }) => {
             </Question>
           ) : null}
 
-          <Info className={`Info info_${exist}`}>
+          <Info className={`Info info_${hasQuestion}`}>
             <InfoDetail>
               <img src={ExpectPerson} />
               <p>예상 모집 인원 6명</p>
             </InfoDetail>
             <InfoDetail>온라인</InfoDetail>
           </Info>
-          <ApplyButton>지원하기</ApplyButton>
+          <ApplyButton onClick={onClose}>지원하기</ApplyButton>
         </Content>
       </Modal>
     </>
   );
 };
 export default ModalApply;
+
+const Button = styled.button`
+  width: 348px;
+  height: 36px;
+  padding: 8px 39px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 16px;
+
+  &.button_BLUE {
+    background-color: #368ff7;
+  }
+  &.button_GREEN {
+    background-color: #34a853;
+  }
+  &.button_GRAY {
+    background-color: #6b6b6b;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
+`;
 
 const BoxQues = styled.div`
   width: 348px;
@@ -176,6 +206,7 @@ const Ptag = styled.p`
     letter-spacing: -0.325px;
   }
 `;
+
 const Box = styled.div`
   width: 348px;
   padding: 16px 0px;
@@ -191,6 +222,7 @@ const Box = styled.div`
 
   box-sizing: border-box;
 `;
+
 const Week = styled.div`
   display: flex;
   gap: 4px;
