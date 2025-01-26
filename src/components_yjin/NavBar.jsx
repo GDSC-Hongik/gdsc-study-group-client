@@ -1,12 +1,19 @@
 import styled from '@emotion/styled';
-import Logo from '../assets/Logo.png';
+import { useNavigate } from 'react-router-dom';
 
+import Logo from '../assets/Logo.png';
 const NavBar = () => {
+  const nav = useNavigate();
+  const moveMain = () => {
+    // GDGoC 로고를 클릭하면 Home 페이지로 이동하는 함수
+    nav('/');
+  };
+
   return (
     <>
       <Header>
         <Content>
-          <Logoo src={Logo}></Logoo>
+          <Logoo onClick={moveMain} src={Logo}></Logoo>
           <Flex>
             <Name className="name">이혁</Name>
             <Name>&nbsp;님</Name>
@@ -31,12 +38,12 @@ const Name = styled.p`
   letter-spacing: -0.4px;
   &.name {
     font-weight: 700;
-    text-decoration-line: underline;
+    text-decoration-line: underline; /* 밑줄 */
     text-decoration-style: solid;
     text-decoration-skip-ink: none;
     text-decoration-thickness: auto;
     text-underline-offset: auto;
-    text-underline-position: from-font;
+    text-underline-position: from-font; /* 적절한 위치에 밑줄을 표시 */
   }
 `;
 
@@ -55,7 +62,7 @@ const Content = styled.div`
 `;
 
 const Header = styled.header`
-  position: fixed;
+  position: fixed; /* 고정 위치로 설정 */
   top: 0;
   left: 0;
   width: 100%;
@@ -65,8 +72,8 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* 화면에서 쌓이는 순서를 제어, 값이 높을수록 화면에서 더 위쪽에 표시된다. */
 
-  border-bottom: 2px solid var(--Component-Interaction-Disabled-Light, #e1e1e1);
+  border-bottom: 2px solid #e1e1e1;
   background: #fff;
 `;
