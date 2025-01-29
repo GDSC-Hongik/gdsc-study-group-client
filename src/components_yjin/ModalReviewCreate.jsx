@@ -1,7 +1,12 @@
+// 스터디 회고를 생성하는 모달
+// 모임 방식과 참여 인원,
+// 학습 목표와 학습 내용을 작성해야함.
+
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useState } from 'react';
+
 import TopLine from './TopLine';
 
 //Modal.setAppElement('#root');
@@ -30,22 +35,17 @@ const ModalReviewCreate = () => {
           <LineBox />
           <WriteBox>
             <WriteTitle>학습 목표를 작성해주세요.</WriteTitle>
-            <WriteContent>
-              프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이
-              자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기
-              위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리
-              인듯 합니다.
-            </WriteContent>
+            <WriteContent
+              onInput={handleResizeHeight}
+              placeholder="학습 목표가 무엇인가요 ?"
+            ></WriteContent>
           </WriteBox>
           <WriteBox>
             <WriteTitle>학습 내용을 작성해주세요. (200자 이상)</WriteTitle>
-            <WriteContent>
-              프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이
-              자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기
-              위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리
-              인듯 합니다. 학습 내용은 200자 이상이기에 우선 더 작성해봤습니다.
-              실제로는 더 길 것으로 예상됩니다.
-            </WriteContent>
+            <WriteContent
+              onInput={handleResizeHeight}
+              placeholder="무엇을 배우셨나요 ?"
+            ></WriteContent>
           </WriteBox>
         </Content>
       </Modal>
@@ -68,17 +68,38 @@ const WriteTitle = styled.p`
   padding: 0px;
 `;
 
-const WriteContent = styled.p`
+const WriteContent = styled.textarea`
   color: #000;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.35px;
+  &::placeholder {
+    color: #b3b3b3;
+  }
 
   margin: 0px;
   padding: 0px;
+
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+
+  box-sizing: border-box;
+  border: none;
+
+  &:focus {
+    outline: none; /* 글을 쓸 때 기본 outline 제거 */
+  }
 `;
+
+const handleResizeHeight = e => {
+  // 글을 씀에 따라 동적으로 같이 늘어나는 높이
+  // onInput 이벤트로 스타일을 반영해준다.
+  e.target.style.height = 'auto'; // 초기화
+  e.target.style.height = `${e.target.scrollHeight}px`; // 살제 높이 반영
+};
 
 const WriteBox = styled.div`
   width: 758px;
@@ -86,7 +107,6 @@ const WriteBox = styled.div`
   margin-bottom: 24px;
 
   box-sizing: border-box;
-
   border-radius: 16px;
   border: 1px solid #555;
   background: var(--Background-Normal, #fff);
@@ -108,6 +128,7 @@ const TwoBoxes = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 23px;
+  width: 758px;
 `;
 
 const InBox = styled.div`
@@ -149,11 +170,11 @@ const Title = styled.input`
 
 const customStyles = {
   content: {
-    /* 스크롤바 없애기 */
-    overflow: 'hidden',
+    /* 좌우 스크롤바 없애기 */
+    overflowX: 'hidden',
     /*모달이 화면 중앙에 오도록 설정 */
     width: '1056px',
-    height: '600px',
+    height: '650px',
     top: '50%',
     left: '50%',
     right: 'auto',
