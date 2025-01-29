@@ -1,3 +1,9 @@
+// 메인 페이지에 쓰이는 스터디 아이템 컴포넌트
+// 모집 중인 스터디 -> 지원하기
+// 지원 중인 스터디 -> 지원 중...
+// 가입한 그터디 -> 이동하기
+// 모집 중인 스터디가 없을 경우 -> 개설하기
+
 import styled from '@emotion/styled';
 import ModalApply from './ModalApply';
 import GrayProfile from '../assets/gray-profile.svg';
@@ -8,10 +14,10 @@ import { useState } from 'react';
 const AppliedStudyItem = ({
   peopleNum,
   schedule,
-  type,
+  type, // BLUE: 아직 지원 가능, //GREEN: 지원 마감
   buttonText,
-  existContent = false,
-  existTitle = true
+  existContent = false, // 내용 존재 여부
+  existTitle = true // 제목 존재 여부
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리 _ 열기 / 닫기
   const [modalType, setModalType] = useState(null); // 어떤 모달인지 구분
