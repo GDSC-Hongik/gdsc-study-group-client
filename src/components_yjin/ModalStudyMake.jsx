@@ -1,4 +1,6 @@
-import { useState } from 'react';
+// 새로운 스터디를 만드는 모달
+// [개설하기]/[스터디 생성] 버튼 클릭 시 나온다.
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Modal from 'react-modal';

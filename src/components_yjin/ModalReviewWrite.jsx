@@ -3,11 +3,10 @@
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+
 import TopLine from './TopLine';
 import GrayArrLeft from '../assets/gray-arrow-left.svg';
 import GrayArrRight from '../assets/gray-arrow-right.svg';
-
-import ReviewItem from './ReviewItem';
 import ReviewStudyInfo from './ReviewStudyInfo';
 import WritingReviews from './WritingReviews';
 

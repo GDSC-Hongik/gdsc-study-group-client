@@ -38,37 +38,37 @@ const StudyList = () => {
         <List>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>

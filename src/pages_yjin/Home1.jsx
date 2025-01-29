@@ -1,12 +1,10 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/css';
 import { useNavigate } from 'react-router-dom';
 
 import NavBar from '../components_yjin/NavBar';
 import AppliedStudyItem from '../components_yjin/AppliedStudyItem';
 import StudyListArrow from '../assets/studylist-arrow.svg';
-import ModalReviewCreate from '../components_yjin/ModalReviewCreate';
-import ModalApply from '../components_yjin/ModalApply';
+
 const Home1 = () => {
   const nav = useNavigate();
   const moveStudyList = () => {

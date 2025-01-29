@@ -2,7 +2,7 @@
 
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+
 import WeekNLeft from '../assets/weekN-left.svg';
 import WeekNRight from '../assets/weekN-right.svg';
 import ExpectPerson from '../assets/apply-person.svg';

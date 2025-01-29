@@ -1,4 +1,6 @@
-// [1. 후기 작성 모달]과 [2. 후기 작성자들 모달]에 쓰이는 스터디 정보 컴포넌트
+// [1. 후기 작성 모달]과 [2. 후기 작성자들 모달]에 쓰이는
+// 스터디 정보 컴포넌트
+
 import styled from '@emotion/styled';
 import GrayProfile from '../assets/gray-profile.svg';
 import Heart from '../assets/heart-icon.svg';

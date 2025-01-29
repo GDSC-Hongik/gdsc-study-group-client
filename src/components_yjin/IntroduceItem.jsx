@@ -1,3 +1,5 @@
+// 사용되지 않을 컴포넌트
+
 import styled from '@emotion/styled';
 import React from 'react';
 import heart from '../assets/heart.svg';

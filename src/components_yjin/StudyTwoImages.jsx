@@ -1,10 +1,14 @@
+// SmallStudyItem 에 쓰이는 두 이미지 (인원 수, 일정) 컴포넌트
+// 인원 마감이면 초록색,
+// 인원 미달이면 파란색
+
 import React from 'react';
 import styled from '@emotion/styled';
 import GreenPerson from '../assets/green-person.svg';
 import BluePerson from '../assets/blue-person.svg';
 import GrayClock from '../assets/gray-clock.svg';
 
-const StudyTwoImages = ({ text1, text2, type }) => {
+const StudyTwoImages = ({ peopleNum, schedule, type }) => {
   let pimg;
   if (type === 'GREEN') {
     pimg = GreenPerson;
@@ -15,9 +19,9 @@ const StudyTwoImages = ({ text1, text2, type }) => {
   return (
     <ContentImg>
       <PersonImg src={pimg}></PersonImg>
-      <Ptag className={`count count_${type}`}>{text1}</Ptag>
+      <Ptag className={`count count_${type}`}>{peopleNum}</Ptag>
       <img src={GrayClock} style={{ width: '32px', height: '32px' }}></img>
-      <Ptag className="clockInfo">{text2}</Ptag>
+      <Ptag className="clockInfo">{schedule}</Ptag>
     </ContentImg>
   );
 };

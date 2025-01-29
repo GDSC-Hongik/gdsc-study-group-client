@@ -1,3 +1,5 @@
+// ModalReviewers.jsx에 쓰이는 하나하나의 회고 아이템
+
 import styled from '@emotion/styled';
 
 const ReviewItem = ({ id, name, idcontent }) => {
