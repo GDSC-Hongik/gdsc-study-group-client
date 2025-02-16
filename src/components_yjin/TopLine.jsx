@@ -1,3 +1,5 @@
+// 회고 모달에 쓰이는 날짜 표시 회색 상단바
+
 import LeftArr from '../assets/left-small-arrow.svg';
 import RightArr from '../assets/right-small-arrow.svg';
 import styled from '@emotion/styled';

@@ -9,7 +9,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(231, 226, 220); /* 나중에 흰색으로 변경할 예쩡 */
+  background-color: rgb(255, 255, 255); /* 나중에 흰색으로 변경할 예쩡 */
 }
 
 body {
