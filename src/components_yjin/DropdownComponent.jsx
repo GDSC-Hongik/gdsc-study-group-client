@@ -1,17 +1,24 @@
+// 드롭다운 버튼
+
 import { useState } from 'react';
 import styled from '@emotion/styled';
 
 const DropdownComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('필터');
+  const [isOpen, setIsOpen] = useState(false); // 열고 닫기 상태를 저장
+  const [selectedValue, setSelectedValue] = useState('필터'); // 옵션 중 선택된 값을 저장
 
   const toggleDropdown = () => {
+    // 열고 닫기를 가능하게하는 함수
+    // isOpen이 true이면 토글이 열리도록, false이면 닫히도록.
     setIsOpen(prev => !prev);
   };
 
   const handleSelect = value => {
     setSelectedValue(value); // 선택한 값 저장
-    setIsOpen(false); // 드롭다운 닫기
+
+    // false로 바뀌면서 드롭다운 닫기
+    setIsOpen(false);
+    toggleDropdown();
   };
 
   return (
@@ -26,6 +33,9 @@ const DropdownComponent = () => {
         </DropdownItem>
         <DropdownItem onClick={() => handleSelect('카테고리 3')}>
           카테고리 3
+        </DropdownItem>
+        <DropdownItem onClick={() => handleSelect('카테고리 4')}>
+          카테고리 4
         </DropdownItem>
       </DropdownList>
     </Dropdown>
@@ -51,7 +61,12 @@ const Dropdown = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  color: #585858;
   font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
 
   &::after {
     content: '▼'; /* 아이콘 */
@@ -73,6 +88,8 @@ const DropdownList = styled.ul`
   z-index: 10;
 
   /* 리스트 숨김 처리 */
+  /* none -> 요소를 숨겨서 공간을 차지하지 않는다. */
+  /* block -> 요소를 보여주며 공간을 차지한다 (한 줄) */
   display: ${props => (props.isOpen ? 'block' : 'none')};
   padding: 0;
   margin: 0;

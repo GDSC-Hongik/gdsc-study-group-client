@@ -1,3 +1,5 @@
+// 사용되지 않을 컴포넌트
+
 import React from 'react';
 import styled from '@emotion/styled';
 import GrayProfile from '../assets/gray-profile.svg';

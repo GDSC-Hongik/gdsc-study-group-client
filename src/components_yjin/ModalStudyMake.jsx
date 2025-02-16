@@ -1,22 +1,19 @@
-import { useState } from 'react';
+// 새로운 스터디를 만드는 모달
+// [개설하기]/[스터디 생성] 버튼 클릭 시 나온다.
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Modal from 'react-modal';
 
-const ModalStudyMake = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+const ModalStudyMake = ({ isOpen, onClose }) => {
+  // 실제 모달 기능 구현 전, 쓰던 모달 상태 관리 변수 / 함수는 제거한다.
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const openModal = () => setModalIsOpen(true);
+  // const closeModal = () => setModalIsOpen(false);
   return (
     <>
-      <button onClick={openModal}>스터디 생성하기</button>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
+      {/* isOpen이 true일 때만 이 모달이 열린다. 이 값은 상위 파일에서 props로 전달 */}
+      <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
         <Content>
           <Title placeholder="스터디명을 입력해주세요." />
           <Flex className="firstFlex">
@@ -61,7 +58,7 @@ const ModalStudyMake = () => {
             <p1>1주차</p1>
             <p2>.</p2>
           </Box>
-          <CreateButton>생성하기</CreateButton>
+          <Creating onClick={onClose}>생성하기</Creating>
         </Content>
       </Modal>
     </>
@@ -78,19 +75,20 @@ const commonFont = css`
   letter-spacing: -0.4px;
 `;
 
-const CreateButton = styled.button`
-  border-radius: 12px;
-  border: none;
-  background-color: #368ff7;
+const Creating = styled.button`
   width: 348px;
   height: 36px;
+  border: none;
+  border-radius: 12px;
+  background: #368ff7;
 
-  padding: 8px 39px;
   margin-top: 16px;
 
+  color: #fff;
   ${commonFont}
   font-weight: 400;
-  color: #fff;
+
+  cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -199,7 +197,7 @@ const Title = styled.input`
 const customStyles = {
   content: {
     width: '1056px',
-    height: '830px',
+    height: '880px',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%,-50%)'

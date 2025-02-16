@@ -1,10 +1,13 @@
+// StudyList 페이지에 쓰이는 스터디 아이템
+// 인원 수 현황과 일정
+
 import React from 'react';
 import styled from '@emotion/styled';
 import GrayProfile from '../assets/gray-profile.svg';
 import SmallArrow from '../assets/small-arrow.svg';
 import StudyTwoImages from './StudyTwoImages';
 
-const SmallStudyItem = ({ text1, text2, type }) => {
+const SmallStudyItem = ({ peopleNum, schedule, type }) => {
   return (
     <Box>
       <Content>
@@ -14,7 +17,11 @@ const SmallStudyItem = ({ text1, text2, type }) => {
           <Ptag className="detail">
             타입스크립트를 심화해서 공부하고, 공유해요.
           </Ptag>
-          <StudyTwoImages text1={text1} text2={text2} type={type} />
+          <StudyTwoImages
+            peopleNum={peopleNum}
+            schedule={schedule}
+            type={type}
+          />
         </div>
       </Content>
       <ArrowImg>

@@ -1,13 +1,24 @@
 import styled from '@emotion/styled';
-import AppliedStudyItem from '../components_yjin/AppliedStudyItem';
 import SmallStudyItem from '../components_yjin/SmallStudyItem';
-import GlobalNavBar from '../components_hhhk/GlobalNavBar';
 import { css } from '@emotion/css';
+import { useState } from 'react';
 import DropdownComponent from '../components_yjin/DropdownComponent';
+import NavBar from '../components_yjin/NavBar';
+import ModalStudyMake from '../components_yjin/ModalStudyMake';
 
 const StudyList = () => {
+  // 모달보다 상위 파일인 이 StudyList에서 모달의 여닫힘 상태를 관리한다.
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+
+  const openButtonClick = () => {
+    setIsModalOpen(true); // 모달 열기
+  };
+  const closeModal = () => {
+    setIsModalOpen(false); // 모달 닫기
+  };
   return (
     <>
+      <NavBar />
       <Container className="content-wrapper">
         <Title>
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -16,43 +27,48 @@ const StudyList = () => {
           </div>
           <Buttons>
             <DropdownComponent />
-            <CreateButton>스터디 생성</CreateButton>
+            {/* 버튼 박스를 그냥 만들고 이 박스를 클릭하면 모달이 열림 상태가 되도록 (isModalOpen가 true)한다. */}
+            <MakeStudyButton onClick={openButtonClick}>
+              스터디 생성
+            </MakeStudyButton>
+            {/* isModalOpen 이 true이면, 아래 모달 컴포넌트가 열리도록 설정  */}
+            <ModalStudyMake isOpen={isModalOpen} onClose={closeModal} />
           </Buttons>
         </Title>
         <List>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>
           <ListFlex>
             <SmallStudyItem
-              text1={'6 / 6'}
-              text2={'조정 예정'}
+              peopleNum={'6 / 6'}
+              schedule={'조정 예정'}
               type={'GREEN'}
             />
             <SmallStudyItem
-              text1={'5 / 6'}
-              text2={'화요일 19시'}
+              peopleNum={'5 / 6'}
+              schedule={'화요일 19시'}
               type={'BLUE'}
             />
           </ListFlex>
@@ -62,6 +78,25 @@ const StudyList = () => {
   );
 };
 export default StudyList;
+
+const MakeStudyButton = styled.button`
+  width: 175px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  background: var(--Component-Default-Primary, #368ff7);
+
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
+`;
 
 const Container = styled.div`
   background-color: #ffffff;
@@ -76,19 +111,6 @@ const commonFont = css`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.4px;
-`;
-
-const CreateButton = styled.button`
-  width: 175px;
-  height: 36px;
-  padding: 8px 39px;
-
-  border: none;
-  border-radius: 8px;
-  background: #368ff7;
-
-  color: #fff;
-  ${commonFont}
 `;
 
 const Buttons = styled.div`
