@@ -31,10 +31,17 @@ function App() {
         buttonText={'이동하기'}
       />
       <AppliedStudyItem
-        text1={'모집 인원 1명 / 6명'}
-        text2={'스터디 일정 화요일 19시'}
+        text1={'1명 / 6명'}
+        text2={'화요일 19시'}
         type={'BLUE'}
         buttonText={'신청하기'}
+        exist={true}
+      />
+      <AppliedStudyItem
+        text1={'1명 / 6명'}
+        text2={'화요일 19시'}
+        type={'GRAY'}
+        buttonText={'지원 중...'}
         exist={true}
       />
       <AppliedStudyItem

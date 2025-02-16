@@ -1,17 +1,23 @@
+// 드롭다운 버튼
+
 import { useState } from 'react';
 import styled from '@emotion/styled';
 
 const DropdownComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('필터');
+  const [isOpen, setIsOpen] = useState(false); // 열고 닫기 상태를 저장
+  const [selectedValue, setSelectedValue] = useState('필터'); // 옵션 중 선택된 값을 저장
 
   const toggleDropdown = () => {
+    // 열고 닫기를 가능하게하는 함수
+    // isOpen이 true이면 토글이 열리도록, false이면 닫히도록.
     setIsOpen(prev => !prev);
   };
 
   const handleSelect = value => {
     setSelectedValue(value); // 선택한 값 저장
-    setIsOpen(false); // 드롭다운 닫기
+
+    // false로 바뀌면서 드롭다운 닫기
+    setIsOpen(false);
     toggleDropdown();
   };
 
@@ -55,7 +61,12 @@ const Dropdown = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  color: #585858;
   font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4px;
 
   &::after {
     content: '▼'; /* 아이콘 */
