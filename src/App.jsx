@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState } from 'react';
-import StudyPage from '../src/components/StudyPage';
-import StudyApplyeeStatus from '../src/components/StudyApplyeeStatus';
-import StudyApplierStatus from '../src/components/StudyApplierStatus';
+import StudyPage from './pages/StudyPage';
+import StudyApplyeeStatus from './components/StudyApplyeeStatus';
+import StudyApplierStatus from './components/StudyApplierStatus';
 import AppliedStudyItem from './components_yjin/AppliedStudyItem';
 import BigStudyItem from './components_yjin/BigStudyItem';
 import IntroduceItem from './components_yjin/IntroduceItem';
@@ -19,8 +19,8 @@ import Router from './router';
 import Home1 from './pages_yjin/Home1';
 
 // 새로 만든 로그인 페이지 컴포넌트
-import LoginPage from '../src/components/LoginPage'; // 경로에 맞게 수정하세요
-import SignupPage from '../src/components/SignupPage';
+import LoginPage from './pages/LoginPage'; // 경로에 맞게 수정하세요
+import SignupPage from './pages/SignupPage';
 
 function App() {
   const [view, setView] = useState('');

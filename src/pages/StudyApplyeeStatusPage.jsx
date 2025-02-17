@@ -2,16 +2,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-// 이미 구현된 헤더
-//import Header from '../components/Header';
+// 이미 구현된 네비게이션 바
+import NavBar from '../components_yjin/NavBar';
 
 // 스터디장 뷰 컴포넌트 (예: 지원자 현황)
-import StudyApplyeeStatus from './StudyApplyeeStatus';
+import StudyApplyeeStatus from '../components/StudyApplyeeStatus';
 
 function StudyApplyeeStatusPage() {
   return (
     <Wrapper>
-      {/* 이미 구현된 헤더 (80px 높이 가정) */}
+      {/* 이미 구현된 네비게이션 바 */}
+      <NavBar />
+
       {/* 첫 번째 블록: 타이틀 영역 */}
       <div className="firstblock">
         <div className="titleRow">
@@ -36,17 +38,18 @@ export default StudyApplyeeStatusPage;
 const Wrapper = styled.div`
   /* 전체 화면을 1920x1080로 가정 (프로젝트 상황에 따라 조정 가능) */
   width: 1920px;
-  //height: 1080px;
   margin: 0 auto;
   box-sizing: border-box;
+  height: 100vh; /* 화면 높이에 맞게 설정 */
 
   /* 좌우 패딩 360px → 실제 사용 가능 폭 = 1200px */
   padding-left: 360px;
   padding-right: 360px;
 
+  /* 첫 번째 블록: 타이틀 영역 */
   .firstblock {
-    /* 헤더 아래 72px 간격 */
-    margin-top: 72px;
+    /* 네비게이션 바 아래 253px 간격 */
+    padding-top: 152px;
     margin-bottom: 72px;
 
     /* 내부 콘텐츠를 1200px 너비로 고정 */

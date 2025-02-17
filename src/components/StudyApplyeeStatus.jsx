@@ -276,6 +276,9 @@ const ApplicantContainer = styled.div`
 
   border-radius: 8px;
   border: 1px solid var(--Component-Default-Outline, #c2c2c2);
+
+  height: 48px; /* 높이를 늘려주기 위한 예시 */
+  flex-shrink: 0;
 `;
 
 const NameGithubContainer = styled.div`
@@ -325,6 +328,8 @@ const NameGithubContainer = styled.div`
 
 const ButtonsContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
 `;
 
@@ -333,6 +338,8 @@ const ToggleButton = styled.button`
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  height: 24px;
 
   border-radius: 12px;
   border: 1px solid var(--Component-Default-Primary, #368ff7);
@@ -340,9 +347,11 @@ const ToggleButton = styled.button`
 
   color: var(--Component-Default-Primary, #368ff7);
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 13px;
+  font-style: normal;
   font-weight: 700;
-  letter-spacing: -0.35px;
+  line-height: normal;
+  letter-spacing: -0.325px;
 
   cursor: pointer;
 `;
