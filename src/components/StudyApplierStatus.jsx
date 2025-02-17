@@ -1,141 +1,215 @@
-/** pages/StudyApplierStatus.jsx */
 import React from 'react';
 import styled from '@emotion/styled';
+import People from '../assets/People.svg';
+
+// 샘플 목데이터
+const sampleData = [
+  {
+    id: 1,
+    title: '이펙티브 타입스크립트 스터디',
+    members: 6,
+    method: '온라인',
+    status: '승인 완료'
+  },
+  {
+    id: 2,
+    title: '이펙티브 자바 스터디',
+    members: 6,
+    method: '오프라인',
+    status: '승인 대기'
+  },
+  {
+    id: 3,
+    title: '스프링 부트 스터디',
+    members: 4,
+    method: '병행',
+    status: '승인 대기'
+  },
+  {
+    id: 4,
+    title: '고랭 스터디',
+    members: 6,
+    method: '온라인',
+    status: '승인 대기'
+  }
+];
 
 function StudyApplierStatus() {
-  // 예시 Mock Data
-  const studyInfo = {
-    studyName: '이펙티브 타입스크립트 스터디',
-    studyDescription: '타입스크립트를 심화해서 공부하고, 공유해요.',
-    manager: { name: '홍길동', github: 'gildong99' },
-    totalApplierCount: 10 // 전체 지원자 수
-  };
-
-  const myApplyData = {
-    name: '김코딩',
-    github: 'kimcoding',
-    // 내 지원 상태 예시
-    status: '합격 대기 중',
-    answers: [
-      {
-        question: '간단한 자기소개 부탁드립니다.',
-        answer: '타입스크립트를 조금 더 깊이있게 학습하고 싶어서 지원했습니다!'
-      },
-      {
-        question: '스터디에 참여하고 싶은 이유는?',
-        answer: '함께 공부하면 동기부여도 되고 지식도 더 잘 쌓일 것 같아요.'
-      }
-    ]
+  // 취소 버튼 클릭 시 처리 로직 (예시)
+  const handleCancel = studyId => {
+    alert(`${studyId}번 스터디 지원 취소`);
+    // 실제 로직(API 호출 등)은 프로젝트에 맞게 구현
   };
 
   return (
-    <Wrapper>
-      <h1>지원 상태 확인 페이지 (일반 사용자)</h1>
+    <Container>
+      {/* 상단 타이틀 */}
+      <Title>나의 스터디 지원 현황</Title>
 
-      {/* 스터디 정보 */}
-      <Section>
-        <SectionTitle>스터디 정보</SectionTitle>
-        <InfoBox>
-          <div>
-            <strong>스터디명:</strong> {studyInfo.studyName}
-          </div>
-          <div>
-            <strong>설명:</strong> {studyInfo.studyDescription}
-          </div>
-          <div>
-            <strong>매니저:</strong> {studyInfo.manager.name} /{' '}
-            {studyInfo.manager.github}
-          </div>
-          <div>
-            <strong>전체 지원자 수:</strong> {studyInfo.totalApplierCount}명
-          </div>
-        </InfoBox>
-      </Section>
+      {/* 스터디 정보 목록 */}
+      {sampleData.map((study, index) => (
+        <StudyItem key={study.id} isFirstItem={index === 0}>
+          {/* 왼쪽 그룹 (제목, 인원 박스, 방식, 상태) */}
+          <LeftGroup>
+            <StudyTitle>{study.title}</StudyTitle>
+            <MembersBox>
+              <img src={People} alt="People" />
+              {study.members}명
+            </MembersBox>
+            <MethodBox>{study.method}</MethodBox>
+            <StatusBox>{study.status}</StatusBox>
+          </LeftGroup>
 
-      {/* 내 지원 상태 */}
-      <Section>
-        <SectionTitle>내 지원 상태</SectionTitle>
-        <InfoBox>
-          <div>
-            <strong>이름:</strong> {myApplyData.name}
-          </div>
-          <div>
-            <strong>깃헙:</strong> {myApplyData.github}
-          </div>
-          <div>
-            <strong>현황:</strong> {myApplyData.status}
-          </div>
-        </InfoBox>
-      </Section>
-
-      {/* 질문/답변 (지원서 내용) */}
-      <Section>
-        <SectionTitle>내 지원서</SectionTitle>
-        {myApplyData.answers.map((item, idx) => (
-          <QnABox key={idx}>
-            <Question>Q: {item.question}</Question>
-            <Answer>A: {item.answer}</Answer>
-          </QnABox>
-        ))}
-      </Section>
-    </Wrapper>
+          {/* 취소 버튼 (우측 정렬) */}
+          <CancelButton onClick={() => handleCancel(study.id)}>
+            취소
+          </CancelButton>
+        </StudyItem>
+      ))}
+    </Container>
   );
 }
 
 export default StudyApplierStatus;
 
-/* Emotion CSS */
-const Wrapper = styled.div`
-  /* 1920x1080 고정 레이아웃 예시 (원하는 대로 조정 가능) */
-  width: 1920px;
-  height: 1080px;
-  margin: 0 auto;
-  box-sizing: border-box;
+/* ───────────────────────────────────────────────────────────────────────────
+   스타일 정의
+   ─────────────────────────────────────────────────────────────────────────── */
 
-  /* 좌우 패딩 360px → 실제 사용 가능 폭 = 1200px */
-  padding: 72px 360px;
+/**
+ * 1) studyitem 간 간격 8px
+ * 2) "나의 스터디 지원 현황"과 첫 아이템 간 24px 띄우기
+ * 3) 첫 번째 아이템에만 24px 간격, 이후 항목 간에는 8px 간격 유지
+ */
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* studyitem 간 간격 8px */
+  width: 892px;
+  padding: 24px 20px;
 
-  background-color: #f7f7f7;
-
-  h1 {
-    margin-bottom: 32px;
-    font-size: 24px;
-    text-align: center;
-  }
+  border-radius: 16px;
+  border: 1px solid var(--Component-Default-Outline, #c2c2c2);
 `;
 
-const Section = styled.section`
-  margin-bottom: 40px;
+/** 상단 타이틀 */
+const Title = styled.h1`
+  color: #368ff7;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  margin: 0; /* 기본 margin 제거 */
+  margin-bottom: 16px; /* 제목과 첫 아이템 사이에 간격 24px */
 `;
 
-const SectionTitle = styled.h2`
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: bold;
+/** studyitem 자체는 한 줄(왼쪽 그룹 + 취소 버튼) */
+const StudyItem = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+
+  border-radius: 8px;
+  border: 1px solid var(--Component-Default-Outline, #c2c2c2);
 `;
 
-const InfoBox = styled.div`
-  padding: 16px;
-  border: 1px solid #ccc;
+/** 왼쪽 그룹(제목, 인원, 방식, 상태) 한 줄 배치 */
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+`;
+
+/** 스터디 제목 (인원 박스와 24px 간격) */
+const StudyTitle = styled.div`
+  margin-right: 24px;
+  color: #000;
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.4px;
+`;
+
+/** 인원 박스 (방식 박스와 14px 간격) */
+const MembersBox = styled.div`
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-right: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--Component-Default-Sub, #6b6b6b);
+
+  color: var(--Component-Default-Sub, #6b6b6b);
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.325px;
+`;
+
+/** 방식 박스 (지원 상태 박스와 14px 간격) */
+const MethodBox = styled.div`
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-right: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--Component-Default-Sub, #6b6b6b);
+
+  color: var(--Component-Default-Sub, #6b6b6b);
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.325px;
+`;
+
+/** 지원 상태 박스 */
+const StatusBox = styled.div`
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 12px;
+  border: 1px solid var(--Component-Default-Sub, #6b6b6b);
+
+  color: var(--Component-Default-Sub, #6b6b6b);
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.325px;
+`;
+
+/** 취소 버튼 (우측) */
+const CancelButton = styled.button`
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: auto; /* 왼쪽 그룹과 버튼 사이 자동 여백 → 우측 정렬 */
+  border-radius: 12px;
+  border: 1px solid var(--Component-Default-Primary, #368ff7);
   background-color: #fff;
-  line-height: 1.5;
 
-  & > div + div {
-    margin-top: 8px;
-  }
-`;
+  color: var(--Component-Default-Primary, #368ff7);
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.325px;
 
-const QnABox = styled.div`
-  margin-bottom: 16px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 16px;
-`;
-
-const Question = styled.div`
-  font-weight: bold;
-`;
-
-const Answer = styled.div`
-  margin-top: 8px;
+  cursor: pointer;
 `;
