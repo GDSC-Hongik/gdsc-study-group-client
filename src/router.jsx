@@ -6,6 +6,7 @@ import Notfound from './pages_yjin/Notfound';
 // 로그인 페이지 컴포넌트
 import LoginPage from './components/LoginPage'; // 경로에 맞춰 수정
 import SignupPage from './components/SignupPage';
+import StudyApplyeeStatusPage from './components/StudyApplyeeStatusPage';
 
 const Router = () => {
   return (
@@ -22,6 +23,9 @@ const Router = () => {
 
         {/* 회원가입 페이지 추가 */}
         <Route path="/signup" element={<SignupPage />} />
+
+        {/* 지원자현황 페이지 추가 */}
+        <Route path="/applyeestatus" element={<StudyApplyeeStatusPage />} />
 
         {/* 위에 해당되지 않는 모든 경로 -> Notfound */}
         <Route path="*" element={<Notfound />} />
