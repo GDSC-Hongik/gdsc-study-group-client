@@ -5,6 +5,9 @@ import styled from '@emotion/styled';
 function LoginPage() {
   return (
     <PageContainer>
+      {/* 이미 제작된 헤더를 사용한다고 하셨으므로, 필요한 위치에 삽입 */}
+      {/* <Header /> */}
+
       <LoginTitle>로그인</LoginTitle>
       <SubText>자율 스터디 서비스에 오신 걸 환영해요!</SubText>
 
@@ -88,13 +91,13 @@ const InputContainer = styled.div`
   box-sizing: border-box;
 
   border-radius: 8px;
-  border: 1px solid #6b6b6b;
+  border: 1px solid #6b6b6b; /* var(--Component-Default-Sub) */
   background: #fff;
 `;
 
 // 실제 입력 필드
 const StyledInput = styled.input`
-  flex: 1;
+  flex: 1; /* 남은 공간을 채우도록 */
   border: none;
   outline: none;
 
@@ -115,7 +118,7 @@ const LoginButton = styled.button`
 
   border-radius: 8px;
   border: none;
-  background: #368ff7;
+  background: #368ff7; /* var(--Component-Default-Primary) */
   cursor: pointer;
 
   color: #fff;
@@ -135,12 +138,14 @@ const SignupButtonContainer = styled.div`
   justify-content: flex-end;
 `;
 
-// 회원가입 텍스트 버튼 (기본 패딩 제거)
+// 회원가입 텍스트 버튼
 const SignupButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0; /* 기본 버튼 패딩 제거 */
+
+  /* 기본 패딩/마진 제거 */
+  padding: 0;
   margin: 0;
 
   color: #000;

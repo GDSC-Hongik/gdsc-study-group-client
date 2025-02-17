@@ -1,10 +1,8 @@
 import './App.css';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import StudyPage from '../src/components/StudyPage';
 import StudyApplyeeStatus from '../src/components/StudyApplyeeStatus';
 import StudyApplierStatus from '../src/components/StudyApplierStatus';
-//import ModalReviewers from '../components/ModalReviewers';
 import AppliedStudyItem from './components_yjin/AppliedStudyItem';
 import BigStudyItem from './components_yjin/BigStudyItem';
 import IntroduceItem from './components_yjin/IntroduceItem';
@@ -20,11 +18,15 @@ import ModalReviewWrite from './components_yjin/ModalReviewWrite';
 import Router from './router';
 import Home1 from './pages_yjin/Home1';
 
+// 새로 만든 로그인 페이지 컴포넌트
+import LoginPage from '../src/components/LoginPage'; // 경로에 맞게 수정하세요
+import SignupPage from '../src/components/SignupPage';
+
 function App() {
   const [view, setView] = useState('');
 
   return (
-    <>
+    <Router>
       {/* 헤더(고정) */}
       <NavBar />
 
@@ -40,13 +42,20 @@ function App() {
           지원상태확인 페이지
         </button>
 
+        {/* 추가: 로그인 페이지 보기 버튼 */}
+        <button onClick={() => setView('login')}>로그인 페이지</button>
+
         {/* 메인 콘텐츠 */}
         {view === 'manager' && <StudyPage userRole="manager" />}
         {view === 'member' && <StudyPage userRole="member" />}
         {view === 'applyeeStatus' && <StudyApplyeeStatus />}
         {view === 'applierStatus' && <StudyApplierStatus />}
+
+        {/* 추가: 로그인 페이지 렌더링 */}
+        {view === 'login' && <LoginPage />}
+        {view === 'signup' && <SignupPage />}
       </div>
-    </>
+    </Router>
   );
 }
 
