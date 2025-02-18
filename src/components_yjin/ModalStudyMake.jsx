@@ -4,44 +4,132 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Modal from 'react-modal';
+import { useState } from 'react';
 
 const ModalStudyMake = ({ isOpen, onClose }) => {
   // 실제 모달 기능 구현 전, 쓰던 모달 상태 관리 변수 / 함수는 제거한다.
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const openModal = () => setModalIsOpen(true);
   // const closeModal = () => setModalIsOpen(false);
+
+  // 🟢 상태 관리 (사용자가 입력할 값)
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [requirement, setRequirement] = useState('');
+  const [question, setQuestion] = useState('');
+  const [maxParticipants, setMaxParticipants] = useState('');
+  const [week, setWeek] = useState('');
+  const [subject, setSubject] = useState('');
+  const [day, setDay] = useState('');
+  const [startTime, setStartTime] = useState({
+    hour: '',
+    minute: '',
+    second: '',
+    nano: ''
+  });
+  const [studyStatus, setStudyStatus] = useState('OFFLINE');
+  const [curriculums, setCurriculums] = useState([{ week: 1, subject: '' }]);
+
+  const resetForm = () => {
+    // 입력값 초기화 함수
+    setName('');
+    setDescription('');
+    setRequirement('');
+    setQuestion('');
+    setMaxParticipants('');
+    setWeek(0);
+    setSubject('');
+    setDay('');
+    setStartTime({ hour: '', minute: '', second: '', nano: '' });
+  };
+
+  const handleChange = e => {
+    // 스터디 상태 드롭다운 값이 변경될 때 실행되는 함수
+    setStudyStatus(e.target.value);
+    console.log('선택한 스터디 상태(온라인/오프라인):', e.target.value);
+  };
+
+  const handleCurriculumChange = (index, key, value) => {
+    // 커리큘럼 전체 주차 목록
+    const newCurriculums = [...curriculums];
+    newCurriculums[index][key] = value;
+    setCurriculums(newCurriculums);
+  };
+
+  const addCurriculum = () => {
+    // 커리큘럼 주차 추가
+    setCurriculums([
+      ...curriculums,
+      { week: curriculums.length + 1, subject: '' }
+    ]);
+  };
+
   return (
     <>
       {/* isOpen이 true일 때만 이 모달이 열린다. 이 값은 상위 파일에서 props로 전달 */}
       <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
         <Content>
-          <Title placeholder="스터디명을 입력해주세요." />
+          <Title
+            placeholder="스터디명을 입력해주세요."
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
           <Flex className="firstFlex">
             <HalfBox className="firstHalfBox">
               <p1>진행 방식</p1>
-              <p2>온라인/오프라인 병행</p2>
+              <StyledSelect
+                style={{ border: 'none' }}
+                value={studyStatus}
+                onChange={handleChange}
+              >
+                <option value="">선택하세요.</option>
+                <option value="ONLINE">온라인</option>
+                <option value="OFFLINE">오프라인</option>
+                <option value="HYBRID">온/오프라인 병행</option>
+              </StyledSelect>
             </HalfBox>
             <HalfBox className="firstHalfBox">
               <p1>예상 모집 인원</p1>
-              <p2>6인</p2>
+              <InputStyle
+                type="text"
+                placeholder="6인"
+                value={maxParticipants}
+                onChange={e => setMaxParticipants(e.target.value)}
+              ></InputStyle>
             </HalfBox>
           </Flex>
 
           <Box className="firstBox">
             <p1>스터디 설명</p1>
-
-            <p2>.</p2>
+            <Description
+              type="text"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              placeholder="스터디 설명을 입력하세요."
+            />
           </Box>
+
           <Flex className="secondFlex">
             <HalfBox>
               <p1>지원 조건</p1>
-              <p2>(객관식) 바로 지원, 질문</p2>
+              <Description
+                type="text"
+                value={requirement}
+                placeholder="조건을 입력하세요."
+                onChange={e => setRequirement(e.target.value)}
+              />
             </HalfBox>
             <HalfBox>
               <p1>지원 질문</p1>
-              <p2>1. 어떤 공부를 해오셨나요...</p2>
+              <Description
+                type="text"
+                value={question}
+                onChange={e => setQuestion(e.target.value)}
+                placeholder="어떤 공부를 해오셨나요?"
+              />
             </HalfBox>
           </Flex>
+
           <Flex>
             <HalfBox className="option">
               <p1>지원 자격</p1>
@@ -52,12 +140,23 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
               <p2>(선택)</p2>
             </HalfBox>
           </Flex>
-          <Sylabus>스터디 예상 커리큘럼</Sylabus>
 
-          <Box>
-            <p1>1주차</p1>
-            <p2>.</p2>
-          </Box>
+          <Sylabus>스터디 예상 커리큘럼</Sylabus>
+          {curriculums.map((curriculum, index) => (
+            <Box key={index}>
+              <p>{curriculum.week}주차</p>
+              <Description
+                type="text"
+                value={curriculum.subject}
+                onChange={e =>
+                  handleCurriculumChange(index, 'subject', e.target.value)
+                }
+                placeholder="주제를 입력하세요."
+              />
+            </Box>
+          ))}
+          <Button onClick={addCurriculum}>커리큘럼 추가</Button>
+
           <Creating onClick={onClose}>생성하기</Creating>
         </Content>
       </Modal>
@@ -66,6 +165,44 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
 };
 
 export default ModalStudyMake;
+
+const Button = styled.button`
+  border: solid 0.7px #3f82f6;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff;
+  color: #3f82f6;
+  text-align: center;
+`;
+
+const InputStyle = styled.input`
+  width: 40px;
+  border: none;
+  &::placeholder {
+    color: #c2c2c2;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+const StyledSelect = styled.select`
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Description = styled.input`
+  border: none;
+  &::placeholder {
+    color: #c2c2c2;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 
 const commonFont = css`
   font-size: 16px;
@@ -101,6 +238,7 @@ const Box = styled.div`
   ${commonFont}
   width: 758px;
   padding: 20px;
+  margin-bottom: 15px;
 
   box-sizing: border-box;
   border-radius: 16px;
