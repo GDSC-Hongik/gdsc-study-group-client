@@ -82,7 +82,6 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
                 value={studyStatus}
                 onChange={handleChange}
               >
-                <option value="">선택하세요.</option>
                 <option value="ONLINE">온라인</option>
                 <option value="OFFLINE">오프라인</option>
                 <option value="HYBRID">온/오프라인 병행</option>
