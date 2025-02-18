@@ -30,6 +30,30 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
   const [studyStatus, setStudyStatus] = useState('OFFLINE');
   const [curriculums, setCurriculums] = useState([{ week: 1, subject: '' }]);
 
+  const createStudy = async () => {
+    try {
+      const response = await baseApi.post('/studies', {
+        name,
+        description,
+        requirement,
+        question,
+        maxParticipants,
+        curriculums: [week, subject],
+        days: [{ day, startTime }],
+        studyStatus: 'OFFLINE'
+      });
+      alert('스터디가 성공적으로 생성되었습니다.');
+      console.log('스터디 생성 응답:', response.data);
+
+      // 모딜 닫기 및 상태 초기화
+      onClose();
+      resetForm();
+    } catch (e) {
+      console.error(e);
+      alert('스터디 생성에 실패했습니다.');
+    }
+  };
+
   const resetForm = () => {
     // 입력값 초기화 함수
     setName('');
@@ -156,7 +180,7 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
           ))}
           <Button onClick={addCurriculum}>커리큘럼 추가</Button>
 
-          <Creating onClick={onClose}>생성하기</Creating>
+          <Creating onClick={createStudy}>생성하기</Creating>
         </Content>
       </Modal>
     </>
