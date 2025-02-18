@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import { handleResizeHeight } from '../styles/ExportStyles';
 
 import TopLine from './TopLine';
 
@@ -87,13 +88,6 @@ const WriteContent = styled.textarea`
     outline: none; /* 글을 쓸 때 기본 outline 제거 */
   }
 `;
-
-const handleResizeHeight = e => {
-  // 글을 씀에 따라 동적으로 같이 늘어나는 높이
-  // onInput 이벤트로 스타일을 반영해준다.
-  e.target.style.height = 'auto'; // 초기화
-  e.target.style.height = `${e.target.scrollHeight}px`; // 살제 높이 반영
-};
 
 const WriteBox = styled.div`
   width: 758px;
