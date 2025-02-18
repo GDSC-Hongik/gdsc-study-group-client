@@ -10,6 +10,7 @@ import ExpectPerson from '../assets/apply-person.svg';
 // hasQuestion : 모달에 질문을 포함할지 여부를 결정
 // buttonText : 모달을 여는 버튼에 표시될 텍스트
 // closeModal : 모달을 닫게 하는 함수
+Modal.setAppElement('#root');
 
 const ModalApply = ({ isOpen, onClose, hasQuestion }) => {
   /* hasQuestion - 모달 스타일에 조건부 스타일 적용 */

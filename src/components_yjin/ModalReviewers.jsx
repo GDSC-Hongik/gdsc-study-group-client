@@ -54,6 +54,8 @@ const data = [
   }
 ];
 
+Modal.setAppElement('#root');
+
 const ModalReviewers = ({ isOpen, onRequestClose }) => {
   return (
     <>

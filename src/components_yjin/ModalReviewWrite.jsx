@@ -15,6 +15,8 @@ const studyGoalGontent =
 const studyContent =
   '프로젝트를 진행하기에 앞서서 아이엠그라운드를 하며 다같이 자기소개하는 시간을 가졌습니다. 100자가 어느정도 인지 감을 잡기 위해 대략적으로 작성을 해봤는데요, 이정도 작성하면 100자 언저리 인듯 합니다. 학습 내용은 200자 이상이기에 우선 더 작성해봤습니다. 실제로는 더 길 것으로 예상됩니다.';
 
+Modal.setAppElement('#root');
+
 const ModalReviewWrite = ({ isOpen, onRequestClose }) => {
   return (
     <>

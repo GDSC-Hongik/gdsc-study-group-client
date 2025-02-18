@@ -10,6 +10,9 @@ import styled from '@emotion/styled';
  * - studyTitle: 스터디 제목
  * - applicant: 전체 지원자 객체 (name, question, answer 등)
  */
+
+Modal.setAppElement('#root');
+
 function QnAModal({ isOpen, onClose, studyTitle, applicant }) {
   // react-modal 스타일
   const customStyles = {

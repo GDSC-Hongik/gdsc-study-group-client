@@ -10,7 +10,7 @@ import { handleResizeHeight } from '../styles/ExportStyles';
 
 import TopLine from './TopLine';
 
-//Modal.setAppElement('#root');
+Modal.setAppElement('#root');
 
 const ModalReviewCreate = ({ isOpen, onRequestClose }) => {
   return (

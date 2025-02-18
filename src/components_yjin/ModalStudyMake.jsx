@@ -6,13 +6,15 @@ import { css } from '@emotion/react';
 import Modal from 'react-modal';
 import { useState } from 'react';
 
+Modal.setAppElement('#root');
+
 const ModalStudyMake = ({ isOpen, onClose }) => {
   // 실제 모달 기능 구현 전, 쓰던 모달 상태 관리 변수 / 함수는 제거한다.
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const openModal = () => setModalIsOpen(true);
   // const closeModal = () => setModalIsOpen(false);
 
-  // 🟢 상태 관리 (사용자가 입력할 값)
+  // 상태 관리 (사용자가 입력할 값)
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [requirement, setRequirement] = useState('');
@@ -33,13 +35,13 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
   const createStudy = async () => {
     try {
       const response = await baseApi.post('/studies', {
-        name,
-        description,
-        requirement,
-        question,
-        maxParticipants,
-        curriculums: [week, subject],
-        days: [{ day, startTime }],
+        name: name,
+        description: description,
+        requirement: requirement,
+        question: question,
+        maxParticipants: maxParticipants,
+        curriculums: curriculums,
+        days: [],
         studyStatus: 'OFFLINE'
       });
       alert('스터디가 성공적으로 생성되었습니다.');
