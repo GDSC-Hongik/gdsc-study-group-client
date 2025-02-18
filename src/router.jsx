@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import StudyList from './pages_yjin/StudyList';
-import Home1 from './pages_yjin/Home1';
-import Notfound from './pages_yjin/Notfound';
+import StudyList from './pages/StudyList';
+import Home1 from './pages/Home1';
+import Notfound from './pages/Notfound';
 
 // 로그인 페이지 컴포넌트
 import LoginPage from './pages/LoginPage'; // 경로에 맞춰 수정
