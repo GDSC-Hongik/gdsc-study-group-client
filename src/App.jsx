@@ -11,7 +11,6 @@ import ModalStudyMake from './components_yjin/ModalStudyMake';
 import SmallStudyItem from './components_yjin/SmallStudyItem';
 import StudyList from './pages_yjin/StudyList';
 import NavBar from './components_yjin/NavBar';
-import GlobalNavBar from './components_hhhk/GlobalNavBar';
 import ModalReviewWrite from './components_yjin/ModalReviewWrite';
 import Router from './router';
 import Home1 from './pages_yjin/Home1';
