@@ -8,13 +8,17 @@ const NavBar = () => {
     // GDGoC 로고를 클릭하면 Home 페이지로 이동하는 함수
     nav('/');
   };
+  const moveApplierStatus = () => {
+    // 내 이름을 누르면 지원상태확인(StudyApplierStatusPage) 페이지로 이동하는 함수
+    nav('/applierstatus');
+  };
 
   return (
     <>
       <Header>
         <Content>
           <Logoo onClick={moveMain} src={Logo}></Logoo>
-          <Flex>
+          <Flex onClick={moveApplierStatus}>
             <Name className="name">이혁</Name>
             <Name>&nbsp;님</Name>
           </Flex>

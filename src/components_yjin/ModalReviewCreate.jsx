@@ -12,18 +12,12 @@ import TopLine from './TopLine';
 
 //Modal.setAppElement('#root');
 
-const ModalReviewCreate = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-
+const ModalReviewCreate = ({ isOpen, onRequestClose }) => {
   return (
     <>
-      <button onClick={openModal}>Modal Open</button>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
         style={customStyles}
       >
         <TopLine exist={false} />
