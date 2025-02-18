@@ -2,8 +2,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import NavBar from '../components_yjin/NavBar';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 추가
 
 function LoginPage() {
+  const navigate = useNavigate(); // navigate 함수 사용
+
+  const handleSignupClick = () => {
+    navigate('/signup'); // 회원가입 페이지로 이동
+  };
+
+  const handleLoginClick = () => {
+    navigate('/'); // 메인페이지로 이동, 아직 로그인 기능 미구현
+  };
+
   return (
     <Wrapper>
       {/* 이미 제작된 헤더를 사용한다고 하셨으므로, 필요한 위치에 삽입 */}
@@ -25,11 +36,11 @@ function LoginPage() {
           </InputContainer>
 
           {/* 로그인 버튼 */}
-          <LoginButton>로그인</LoginButton>
+          <LoginButton onClick={handleLoginClick}>로그인</LoginButton>
 
           {/* 회원가입 버튼 (텍스트 링크) - 우측 정렬 */}
           <SignupButtonContainer>
-            <SignupButton>회원가입</SignupButton>
+            <SignupButton onClick={handleSignupClick}>회원가입</SignupButton>
           </SignupButtonContainer>
         </FormContainer>
       </LoginContainer>

@@ -6,7 +6,13 @@ import People from '../assets/People.svg';
 import Calendar from '../assets/Calendar.svg';
 import ChevronRight from '../assets/chevron-right.svg';
 
-function StudyReview({ userRole, weeklyReviews }) {
+function StudyReview({
+  userRole,
+  weeklyReviews,
+  openCreateModal,
+  openWriteModal,
+  openReviewersModal
+}) {
   // 스터디장 여부 확인
   const isLeader = userRole === 'manager';
 
@@ -40,7 +46,17 @@ function StudyReview({ userRole, weeklyReviews }) {
               {/* (스터디장만 보이는 '수정' 버튼) */}
               {isLeader && <button className="editBtn">수정</button>}
               {/* 화살표 이동 버튼 (회고 상세 페이지 이동 등) */}
-              <button className="arrowBtn">
+              <button
+                className="arrowBtn"
+                onClick={() => {
+                  // 예시 조건: 인덱스 0,1은 후기 작성 모달, 그 외는 후기 확인 모달
+                  if (idx < 2) {
+                    openWriteModal();
+                  } else {
+                    openReviewersModal();
+                  }
+                }}
+              >
                 <img src={ChevronRight} alt="chevron-right" />
               </button>
             </div>
@@ -49,7 +65,11 @@ function StudyReview({ userRole, weeklyReviews }) {
       </div>
 
       {/* (스터디장만 보이는 '회고 작성하기' 버튼) */}
-      {isLeader && <button className="writeBtn">회고 작성하기</button>}
+      {isLeader && (
+        <button className="writeBtn" onClick={openCreateModal}>
+          회고 작성하기
+        </button>
+      )}
     </ReviewWrapper>
   );
 }

@@ -7,7 +7,7 @@ import GrayProfile from '../assets/gray-profile.svg';
 import SmallArrow from '../assets/small-arrow.svg';
 import StudyTwoImages from './StudyTwoImages';
 
-const SmallStudyItem = ({ peopleNum, schedule, type }) => {
+const SmallStudyItem = ({ peopleNum, schedule, type, onArrowClick }) => {
   return (
     <Box>
       <Content>
@@ -24,7 +24,7 @@ const SmallStudyItem = ({ peopleNum, schedule, type }) => {
           />
         </div>
       </Content>
-      <ArrowImg>
+      <ArrowImg onClick={onArrowClick}>
         <img src={SmallArrow}></img>
       </ArrowImg>
     </Box>

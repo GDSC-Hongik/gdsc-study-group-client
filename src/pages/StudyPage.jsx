@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState } from 'react'; // useState 추가
 import styled from '@emotion/styled';
 import { useLocation } from 'react-router-dom'; // useLocation 추가
 
@@ -13,10 +13,29 @@ import StudyGroup from '../components/StudyGroup';
 import StudyApplierButton from '../components/StudyApplierButton';
 import StudyApplyeeButton from '../components/StudyApplyeeButton';
 
+import ModalReviewCreate from '../components_yjin/ModalReviewCreate'; // 모달 컴포넌트 임포트
+import ModalReviewWrite from '../components_yjin/ModalReviewWrite';
+import ModalReviewers from '../components_yjin/ModalReviewers';
+
 function StudyPage() {
   const location = useLocation(); // useLocation 훅 사용
   const queryParams = new URLSearchParams(location.search); // 쿼리 파라미터 읽기
   const userRole = queryParams.get('userRole'); // userRole 값 추출
+
+  // 모달 상태 관리
+  const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
+  const [writeModalIsOpen, setWriteModalIsOpen] = useState(false);
+  const [reviewersModalIsOpen, setReviewersModalIsOpen] = useState(false);
+
+  const openCreateModal = () => setCreateModalIsOpen(true); // 모달 열기
+  const closeCreateModal = () => setCreateModalIsOpen(false); // 모달 닫기
+
+  const openWriteModal = () => setWriteModalIsOpen(true);
+  const closeWriteModal = () => setWriteModalIsOpen(false);
+
+  const openReviewersModal = () => setReviewersModalIsOpen(true);
+  const closeReviewersModal = () => setReviewersModalIsOpen(false);
+
   // 예시 하드코딩 데이터
   const studyData = {
     studyName: '이펙티브 타입스크립트 스터디',
@@ -92,6 +111,10 @@ function StudyPage() {
             <StudyReview
               userRole={userRole}
               weeklyReviews={studyData.weeklyReviews}
+              // 모달 열기 함수 전달
+              openCreateModal={openCreateModal}
+              openWriteModal={openWriteModal}
+              openReviewersModal={openReviewersModal}
             />
           </div>
           <div className="studygroup">
@@ -102,6 +125,20 @@ function StudyPage() {
           </div>
         </div>
       </Content>
+
+      {/* 모달 컴포넌트 추가 */}
+      <ModalReviewCreate
+        isOpen={createModalIsOpen}
+        onRequestClose={closeCreateModal}
+      />
+      <ModalReviewWrite
+        isOpen={writeModalIsOpen}
+        onRequestClose={closeWriteModal}
+      />
+      <ModalReviewers
+        isOpen={reviewersModalIsOpen}
+        onRequestClose={closeReviewersModal}
+      />
     </Wrapper>
   );
 }

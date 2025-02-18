@@ -1,3 +1,5 @@
+// 일단은 안 씀. Router로 조작 중인데 추후에 변경할수도?
+
 import './App.css';
 import React, { useState } from 'react';
 import StudyPage from './pages/StudyPage';

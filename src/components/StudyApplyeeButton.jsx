@@ -1,11 +1,14 @@
 /** StudyApplyeeButton.jsx */
 import React from 'react';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom'; // useNavigate 추가
 
 function StudyApplyeeButton({ isClosed }) {
+  const navigate = useNavigate(); // navigate 함수 사용
+
   const handleCheckApply = () => {
     // 지원현황 페이지로 이동
-    alert('지원현황 페이지로 이동합니다.');
+    navigate('/applyeestatus'); // StudyApplyeeStatusPage로 이동
   };
 
   const handleEditStudy = () => {
