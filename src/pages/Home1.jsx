@@ -70,7 +70,6 @@ const Home1 = () => {
     <>
       <NavBar />
       <Container className="content-wrapper">
-        <ModalReviewCreate />
         <Title>
           <div style={{ display: 'flex', gap: '10px' }}>
             <p1>스터디</p1>
