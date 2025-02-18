@@ -17,7 +17,10 @@ const StudyStatus = ({
         <div className="applied">
           <div className="title">
             <div className="profile">
-              <img src={Ellipse} width="48px" height="48px"></img>
+              <img
+                src={Ellipse}
+                style={{ width: '48px', height: '48px' }}
+              ></img>
             </div>
             <div className="studyinfo">
               <div className="studyname">{studyname}</div>
@@ -68,7 +71,7 @@ const StudyStatus = ({
         <div className="empty">
           <div className="Upper">
             <div className="emptyStudyImage">
-              <img src={Empty} width="129" height="97.097"></img>
+              <img src={Empty}></img>
             </div>
             <div className="content">
               현재 모집 중인 <br />

@@ -5,8 +5,11 @@ import { useState } from 'react';
 import DropdownComponent from '../components_yjin/DropdownComponent';
 import NavBar from '../components_yjin/NavBar';
 import ModalStudyMake from '../components_yjin/ModalStudyMake';
+import { useNavigate } from 'react-router-dom';
 
 const StudyList = () => {
+  const navigate = useNavigate(); // navigate 함수 사용
+
   // 모달보다 상위 파일인 이 StudyList에서 모달의 여닫힘 상태를 관리한다.
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
 
@@ -16,6 +19,12 @@ const StudyList = () => {
   const closeModal = () => {
     setIsModalOpen(false); // 모달 닫기
   };
+
+  // 화살표 클릭 시 StudyPage로 이동하는 함수
+  const handleArrowClick = () => {
+    navigate('/study'); // StudyPage로 이동
+  };
+
   return (
     <>
       <NavBar />
@@ -41,11 +50,13 @@ const StudyList = () => {
               peopleNum={'6 / 6'}
               schedule={'조정 예정'}
               type={'GREEN'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
             <SmallStudyItem
               peopleNum={'5 / 6'}
               schedule={'화요일 19시'}
               type={'BLUE'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
           </ListFlex>
           <ListFlex>
@@ -53,11 +64,13 @@ const StudyList = () => {
               peopleNum={'6 / 6'}
               schedule={'조정 예정'}
               type={'GREEN'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
             <SmallStudyItem
               peopleNum={'5 / 6'}
               schedule={'화요일 19시'}
               type={'BLUE'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
           </ListFlex>
           <ListFlex>
@@ -65,11 +78,13 @@ const StudyList = () => {
               peopleNum={'6 / 6'}
               schedule={'조정 예정'}
               type={'GREEN'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
             <SmallStudyItem
               peopleNum={'5 / 6'}
               schedule={'화요일 19시'}
               type={'BLUE'}
+              onArrowClick={handleArrowClick} // 화살표 클릭 시 이동 처리
             />
           </ListFlex>
         </List>
