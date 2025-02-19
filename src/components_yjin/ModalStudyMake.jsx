@@ -8,18 +8,16 @@ import { useState } from 'react';
 
 Modal.setAppElement('#root');
 
-const ModalStudyMake = ({ isOpen, onClose }) => {
-  // 실제 모달 기능 구현 전, 쓰던 모달 상태 관리 변수 / 함수는 제거한다.
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const openModal = () => setModalIsOpen(true);
-  // const closeModal = () => setModalIsOpen(false);
+const ModalStudyMake = ({ isOpen, onClose, addStudy }) => {
+  // 스터디 생성 모달에서 생성 버튼을 누르면 스터디 전체 목록에 데이터 추가
+  // 그 추가된 스터디가 화면에 나오도록 설정 (최근 3개의 스터디만 보이는 것이 맞다.)
 
   // 상태 관리 (사용자가 입력할 값)
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [requirement, setRequirement] = useState('');
   const [question, setQuestion] = useState('');
-  const [maxParticipants, setMaxParticipants] = useState('');
+  const [maxParticipants, setMaxParticipants] = useState(0);
   const [week, setWeek] = useState('');
   const [subject, setSubject] = useState('');
   const [day, setDay] = useState('');
@@ -32,6 +30,7 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
   const [studyStatus, setStudyStatus] = useState('OFFLINE');
   const [curriculums, setCurriculums] = useState([{ week: 1, subject: '' }]);
 
+  // post요청이 성공하면, 서버에서 받은 데이터를 addStudy(newStudy)로 부모에게 전달한다.
   const createStudy = async () => {
     try {
       const response = await baseApi.post('/studies', {
@@ -46,6 +45,9 @@ const ModalStudyMake = ({ isOpen, onClose }) => {
       });
       alert('스터디가 성공적으로 생성되었습니다.');
       console.log('스터디 생성 응답:', response.data);
+
+      // 부모 컴포넌트로 새 스터디 정보 전달
+      addStudy(response.data);
 
       // 모딜 닫기 및 상태 초기화
       onClose();
