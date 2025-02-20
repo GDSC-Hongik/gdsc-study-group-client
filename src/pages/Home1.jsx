@@ -1,88 +1,32 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 import NavBar from '../components_yjin/NavBar';
 import AppliedStudyItem from '../components_yjin/AppliedStudyItem';
 import StudyListArrow from '../assets/studylist-arrow.svg';
 import { useState } from 'react';
-import baseApi from '../api/baseApi';
 import { useEffect } from 'react';
+import { mocData } from '../../data/studyData';
 
-const mocData = [
-  {
-    id: 1,
-    name: '이펙티브 타입스크립트 스터디1',
-    description: '스터디 설명',
-    requirement: '요구조건',
-    question: '질문이 있어요',
-    maxParticipants: 6,
-    curriculums: [
-      {
-        week: 0,
-        subject: 'string'
-      }
-    ],
-    days: [
-      {
-        day: '화요일',
-        startTime: {
-          hour: 19,
-          minute: 0,
-          second: 0,
-          nano: 0
-        }
-      }
-    ],
-    studyStatus: 'OFFLINE',
-    status: 'PARTICIPANTS'
-  },
-  {
-    id: 1,
-    name: '이펙티브 타입스크립트 스터디2',
-    description: '스터디 설명2',
-    requirement: '요구조건2',
-    question: '질문이 있어요2',
-    maxParticipants: 6,
-    curriculums: [
-      {
-        week: 0,
-        subject: 'string'
-      }
-    ],
-    days: [
-      {
-        day: '화요일',
-        startTime: {
-          hour: 19,
-          minute: 0,
-          second: 0,
-          nano: 0
-        }
-      }
-    ],
-    studyStatus: 'ONLINE',
-    status: 'CANCELED'
-  }
-];
+import { fetchStudyList, fetchStudyParticipants } from '../api/studyItem';
 
-const convertMocData = apiData => {
-  return apiData.map(study => ({
-    id: study.id,
-    name: study.name,
-    description: study.description,
-    maxParticipants:
-      study.maxParticipants === 0
-        ? '제한 없음'
-        : `0명/${study.maxParticipants}명`,
-    schedule:
-      study.studyStatus === 'ONLINE'
-        ? '온라인'
-        : study.days?.length > 0
-          ? study.days.map(d => `${d.day} ${d.startTime.hour}시`).join(',')
-          : '일정 없음'
-  }));
-};
+// const convertMocData = apiData => {
+//   return apiData.map(study => ({
+//     id: study.id,
+//     name: study.name,
+//     description: study.description,
+//     maxParticipants:
+//       study.maxParticipants === 0
+//         ? '제한 없음'
+//         : `0명/${study.maxParticipants}명`,
+//     schedule:
+//       study.studyStatus === 'ONLINE'
+//         ? '온라인'
+//         : study.days?.length > 0
+//           ? study.days.map(d => `${d.day} ${d.startTime.hour}시`).join(',')
+//           : '일정 없음'
+//   }));
+// };
 
 const Home1 = () => {
   const nav = useNavigate();
@@ -90,47 +34,18 @@ const Home1 = () => {
     nav('/study-list');
   };
   const [studyList, setStudyList] = useState(mocData); // useState([]) 스터디 목록 상태
-  const [status, setStatus] = useState('participants');
-
-  //개설하기 버튼을 눌러서 모달에서 스터디를 생성했을 때 홈페이지에 스터디가 추가된다.
-  async function fetchStudyList() {
-    try {
-      const response = await baseApi.get('/studies'); // 스터디 전체 목록 가져와서 홈페이지에 보여주기
-      setStudyList(convertMocData(response.data)); // 변환된 데이터
-      alert('스터디 목록을 성공적으로 불러왔습니다.');
-    } catch (e) {
-      console.error(e);
-      alert('스터디 목록을 불러오는데 실패했습니다.');
-    }
-  }
+  const [status, setStatus] = useState('PARTICIPANTS');
+  const [studyId, setStudyId] = useState(0);
 
   useEffect(() => {
-    fetchStudyList();
+    fetchStudyList(setStudyList);
+    fetchStudyParticipants(studyId, setStatus);
   }, []);
 
   // 새로운 스터디 추가 함수 -> AppliedStudyItem에 props로 전달
   const addStudy = newStudy => {
     setStudyList(prevStudies => [...prevStudies, newStudy]);
   };
-
-  // 스터디 모집(지원) 상태에 따른 필터링
-  // 1. 모집 중인 스터디가 없으면 '개설하기' 스터디 하나만
-  // 2. 모집 중인(지원 안한) 스터디가 있으면 '지원하기' 스터디 보여주기
-  // 3. 지원 중인 스터디가 있으면  '지원 중..' 스터디 보여주기
-  // 4. 지원 완료된 스터디가 있으면 '이동하기' 스터디 보여주기
-  async function fetchStudyParticipants() {
-    try {
-      const response = await baseApi.get(`/studies/${study_id}/participants`);
-      setStatus(response.data.status);
-      alert('스터디 지원 상태를 성공적으로 불러왔습니다.');
-    } catch (e) {
-      console.error(e);
-      alert('스터디 지원 상태를 불러오는데 실패했습니다.');
-    }
-  }
-  useEffect(() => {
-    fetchStudyParticipants();
-  }, []);
 
   return (
     <>
@@ -152,7 +67,7 @@ const Home1 = () => {
         <FlexStudy>
           {studyList.slice(-3).map(studyItem => (
             <AppliedStudyItem
-              key={studyItem.id}
+              key={studyItem.studyId}
               name={studyItem.name}
               description={studyItem.description}
               maxParticipants={studyItem.maxParticipants}
