@@ -10,17 +10,31 @@ import GrayProfile from '../assets/gray-profile.svg';
 import NoStudy from '../assets/no-study.svg';
 import ModalStudyMake from './ModalStudyMake';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+// 모집 중인 상태의 스터디가 없으면 '현재 모집 중인 스터디가 없어요'인 스터디 아이템만 띄워주면 된다.
+// -> existTitle = false
 
 const AppliedStudyItem = ({
-  peopleNum,
-  schedule,
-  type, // BLUE: 아직 지원 가능, //GREEN: 지원 마감
-  buttonText,
-  existContent = false, // 내용 존재 여부
-  existTitle = true // 제목 존재 여부
+  name,
+  description,
+  maxParticipants, // 모집인원
+  schedule, // 스터디 일정
+  addStudy, // 새로운 스터디 추가 함수 -> ModalStudyMake에 전달
+  status // "OFFLINE" | "ONLINE" | "FINISHED"
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리 _ 열기 / 닫기
   const [modalType, setModalType] = useState(null); // 어떤 모달인지 구분
+  const nav = useNavigate();
+
+  const [buttonText, setButtonText] = useState('');
+
+  // 하위 모달 컴포넌트에 props로 전달해주는 역할
+  const closeModal = () => {
+    setIsModalOpen(false); // 모달 닫기
+    setModalType(null);
+  };
 
   // 버튼이 '지원하기'인지 '개설하기'인지에 따라 어떤 모달을 보여줄지를 결정하는 모달 타입 setModalType
   const handleButtonClick = () => {
@@ -30,13 +44,40 @@ const AppliedStudyItem = ({
       setModalType('make');
     }
     setIsModalOpen(true); // 모달 열기
+    // 스터디 메인 페이지로 이동하기
+    if (buttonText === '이동하기') {
+      // 나중에 `study/${id}`로 어떤 스터디인지 연결 필요
+      nav('/study');
+    }
   };
 
-  // 하위 모달 컴포넌트에 props로 전달해주는 역할
-  const closeModal = () => {
-    setIsModalOpen(false); // 모달 닫기
-    setModalType(null);
-  };
+  // status 값이 바뀔 때마다 buttonText 설정
+  useEffect(() => {
+    switch (status) {
+      case 'PARTICIPANTS':
+        setButtonText('이동하기');
+        break;
+      case 'WAITING':
+        setButtonText('지원 중...');
+        break;
+      case 'CANCELED':
+      default:
+        setButtonText('지원하기');
+        break;
+    }
+  }, [status]);
+
+  // 버튼 색상(타입) 결정
+  const buttonType =
+    buttonText === '지원하기' || buttonText === '개설하기'
+      ? 'BLUE'
+      : buttonText === '이동하기'
+        ? 'GREEN'
+        : 'GRAY';
+
+  // existTitle 여부 결정
+  // '개설하기' 스터디가 아니면, 스터디 제목내용이 있다.
+  const existTitle = buttonText !== '개설하기';
 
   return (
     <Box>
@@ -47,24 +88,28 @@ const AppliedStudyItem = ({
             style={{ width: '48px', height: '48px' }}
           ></CircleImg>
           <div>
-            <Ptag className="title">이펙티브 타입스크립트 스터디</Ptag>
-            <Ptag className="detail">타입스크립트를 심화해서 공부해요.</Ptag>
+            <Ptag className="title">{name}</Ptag>
+            {/*name */}
+            <Ptag className="detail">{description}</Ptag>
+            {/*description */}
           </div>
         </Content>
       )}
 
-      {existContent === true && (
+      {existTitle && (
         <ContentDetail>
           <li>
-            모집 인원 &nbsp; <span className="bold">{peopleNum}</span>
+            모집 인원 &nbsp; <span className="bold">{maxParticipants}명</span>
           </li>
           <li>
-            스터디 일정 &nbsp; <span className="bold">{schedule}</span>
+            스터디 일정 &nbsp; <span className="bold">{schedule}</span>{' '}
+            {/* day */}
           </li>
         </ContentDetail>
       )}
 
-      {existTitle === false && (
+      {/* 모집 중인 스터디가 아예 없음 */}
+      {!existTitle && (
         <NoStudyImg>
           <img src={NoStudy} />
           <Ptag className="noStudyment">현재 모집 중인 스터디가 없어요.</Ptag>
@@ -72,7 +117,10 @@ const AppliedStudyItem = ({
       )}
 
       <ButtonDiv>
-        <Button onClick={handleButtonClick} className={`Button button_${type}`}>
+        <Button
+          onClick={handleButtonClick}
+          className={`Button button_${buttonType}`}
+        >
           {buttonText}
         </Button>
       </ButtonDiv>
@@ -84,8 +132,13 @@ const AppliedStudyItem = ({
           hasQuestion={false}
         />
       )}
+      {/*question */}
       {modalType === 'make' && (
-        <ModalStudyMake isOpen={isModalOpen} onClose={closeModal} />
+        <ModalStudyMake
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          addStudy={addStudy}
+        />
       )}
     </Box>
   );
